@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 837670813}
   - component: {fileID: 837670808}
   m_Layer: 0
-  m_Name: HoverableTest
+  m_Name: Employee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

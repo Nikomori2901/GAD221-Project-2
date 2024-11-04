@@ -5,5 +5,5 @@ using UnityEngine;
 public static class PlayerResources
 {
     public static int funding;
-    public static int morale;
+    public static int morale; // based on all emplyoees morale
 }
