@@ -6,18 +6,17 @@ using UnityEngine.Events;
 
 public class Hoverable : MonoBehaviour
 {
-    [SerializeField] UnityEvent<GameObject> OnHoverEvent;
-    [SerializeField] UnityEvent<GameObject> OnUnhoverEvent;
-
+    [SerializeField] UnityEvent<GameObject> onHoverEvent;
+    [SerializeField] UnityEvent<GameObject> onUnhoverEvent;
     private void OnMouseEnter()
     {
         Debug.Log("Hover");
-        OnHoverEvent.Invoke(gameObject);
+        onHoverEvent.Invoke(gameObject);
     }
 
     private void OnMouseExit()
     {
         Debug.Log("Unhover");
-        OnUnhoverEvent.Invoke(gameObject);
+        onUnhoverEvent.Invoke(gameObject);
     }
 }

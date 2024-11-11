@@ -13,10 +13,8 @@ public class EmployeeTooltip : Tooltip
     [SerializeField] TMP_Text artText;
     [SerializeField] TMP_Text audioText;
 
-    public void SetEmployeeInfo(GameObject employeeObject)
+    public void SetEmployeeInfo(Employee employee)
     {
-        Employee employee = employeeObject.GetComponent<Employee>();
-
         nameText.text = employee.employeeName;
         moraleText.text = "Morale: " + employee.employeeMorale;
         designText.text = "Design: " + employee.designSkill;

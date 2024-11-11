@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Employee : MonoBehaviour
 {
+    public Collider2D collider;
+
     [SerializeField] public string employeeName;
     [SerializeField] public int employeeMorale;
 
@@ -11,6 +14,17 @@ public class Employee : MonoBehaviour
     [SerializeField] public int programmingSkill;
     [SerializeField] public int artSkill;
     [SerializeField] public int audioSkill;
+
+    [SerializeField] UnityEvent<GameObject> showTooltip;
+    [SerializeField] UnityEvent<GameObject> hideTooltip;
+    [SerializeField] UnityEvent<Employee> onMouseDown;
+
+    public bool grabbed = false;
+
+    void Start()
+    {
+        collider = GetComponent<Collider2D>();
+    }
 
     public void Initialize(string name, int morale, int design, int programming, int art, int audio)
     {
@@ -22,13 +36,20 @@ public class Employee : MonoBehaviour
         audioSkill = audio;
     }
 
-    void Start()
+    private void OnMouseEnter()
     {
-        
+        Debug.Log("Hover");
+        showTooltip.Invoke(gameObject);
     }
 
-    void Update()
+    private void OnMouseExit()
     {
-        
+        Debug.Log("Unhover");
+        hideTooltip.Invoke(gameObject);
+    }
+
+    private void OnMouseDown()
+    {
+        onMouseDown.Invoke(this);
     }
 }
