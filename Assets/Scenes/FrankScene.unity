@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 404364267}
   - component: {fileID: 404364266}
   m_Layer: 5
-  m_Name: Programming Station Tooltip (1)
+  m_Name: Design Station Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1049,7 +1049,7 @@ Transform:
   m_GameObject: {fileID: 540453793}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.23205566, y: 1.1785278, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1508,6 +1508,7 @@ GameObject:
   - component: {fileID: 747150535}
   - component: {fileID: 747150534}
   - component: {fileID: 747150533}
+  - component: {fileID: 747150537}
   m_Layer: 0
   m_Name: Programming Station (1)
   m_TagString: Untagged
@@ -1542,12 +1543,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: HoverStation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 747150537}
+          m_ObjectArgumentAssemblyTypeName: TeamStation, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUnhoverEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 187461991}
         m_TargetAssemblyTypeName: Tooltip, Assembly-CSharp
         m_MethodName: HideTooltip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: UnhoverStation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1669,6 +1694,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747150537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747150532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3361c26c58343494991a89984b6b482f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employees: []
 --- !u!1 &858943044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1720,7 @@ GameObject:
   - component: {fileID: 858943047}
   - component: {fileID: 858943046}
   m_Layer: 5
-  m_Name: Programming Station Tooltip (3)
+  m_Name: Audio Station Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2172,6 +2210,7 @@ GameObject:
   - component: {fileID: 1150129109}
   - component: {fileID: 1150129108}
   - component: {fileID: 1150129107}
+  - component: {fileID: 1150129111}
   m_Layer: 0
   m_Name: Programming Station (2)
   m_TagString: Untagged
@@ -2206,12 +2245,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: HoverStation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1150129111}
+          m_ObjectArgumentAssemblyTypeName: TeamStation, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUnhoverEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 187461991}
         m_TargetAssemblyTypeName: Tooltip, Assembly-CSharp
         m_MethodName: HideTooltip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: UnhoverStation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2333,6 +2396,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150129111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150129106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3361c26c58343494991a89984b6b482f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employees: []
 --- !u!1 &1193448828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2421,7 @@ GameObject:
   - component: {fileID: 1193448831}
   - component: {fileID: 1193448830}
   - component: {fileID: 1193448829}
+  - component: {fileID: 1193448833}
   m_Layer: 0
   m_Name: Programming Station (3)
   m_TagString: Untagged
@@ -2379,12 +2456,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: HoverStation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1193448833}
+          m_ObjectArgumentAssemblyTypeName: TeamStation, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUnhoverEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 187461991}
         m_TargetAssemblyTypeName: Tooltip, Assembly-CSharp
         m_MethodName: HideTooltip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: UnhoverStation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2506,6 +2607,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193448833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193448828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3361c26c58343494991a89984b6b482f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employees: []
 --- !u!1 &1225386255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,6 +2632,7 @@ GameObject:
   - component: {fileID: 1225386256}
   - component: {fileID: 1225386259}
   - component: {fileID: 1225386258}
+  - component: {fileID: 1225386260}
   m_Layer: 0
   m_Name: Programming Station
   m_TagString: Untagged
@@ -2619,12 +2734,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: HoverStation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1225386260}
+          m_ObjectArgumentAssemblyTypeName: TeamStation, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUnhoverEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 187461991}
         m_TargetAssemblyTypeName: Tooltip, Assembly-CSharp
         m_MethodName: HideTooltip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1341986280}
+        m_TargetAssemblyTypeName: EmployeeGrabber, Assembly-CSharp
+        m_MethodName: UnhoverStation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2679,6 +2818,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1225386260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225386255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3361c26c58343494991a89984b6b482f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employees: []
 --- !u!1 &1341986279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2831,7 +2983,7 @@ GameObject:
   - component: {fileID: 1555817195}
   - component: {fileID: 1555817194}
   m_Layer: 5
-  m_Name: Programming Station Tooltip (2)
+  m_Name: Art Station Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

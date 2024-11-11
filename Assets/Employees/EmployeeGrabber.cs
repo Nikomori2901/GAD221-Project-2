@@ -58,8 +58,6 @@ public class EmployeeGrabber : MonoBehaviour
                 ReturnEmployee();
             }
         }
-        
-        // when released if on station that is free assigns them, if not, snaps employee back to original location
     }
 
     // The two hover functions would probably be better off as a raycast but this is a simple solution for prototyping.
@@ -92,7 +90,4 @@ public class EmployeeGrabber : MonoBehaviour
         employeeOriginalPos = Vector3.zero;
         StopAllCoroutines();
     }
-
-    // grabs employee when clicking on them
-    
 }
