@@ -43,6 +43,7 @@ public class ProgrammingProgressBar : MonoBehaviour
     {
         CurrentProgress += progress;
         GeneralSlider.SetProgress(CurrentProgress);
+        Debug.Log(CurrentProgress + "=" + MaxProgress);
     }
 
     IEnumerator DeactivateVictoryScreen()
