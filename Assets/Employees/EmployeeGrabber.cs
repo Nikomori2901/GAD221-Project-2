@@ -6,6 +6,8 @@ public class EmployeeGrabber : MonoBehaviour
 {
     public Employee currentEmployee;
     public bool currentlyHolding;
+    public TeamStation hoveringStation;
+
     private Vector3 employeeOriginalPos;
 
     void Start()
@@ -23,6 +25,7 @@ public class EmployeeGrabber : MonoBehaviour
         if (!currentlyHolding)
         {
             currentEmployee = employee;
+            currentEmployee.collider.enabled = false;
             currentlyHolding = true;
             employeeOriginalPos = employee.transform.position;
             StartCoroutine(Holding());
@@ -44,16 +47,36 @@ public class EmployeeGrabber : MonoBehaviour
     {
         if (currentlyHolding)
         {
-            currentEmployee.grabbed = false;
-            ReturnEmployee();
+            if (hoveringStation != null)
+            {
+                AssignEmployee();
+            }
+
+            else
+            {
+                currentEmployee.collider.enabled = true;
+                ReturnEmployee();
+            }
         }
         
         // when released if on station that is free assigns them, if not, snaps employee back to original location
     }
 
+    // The two hover functions would probably be better off as a raycast but this is a simple solution for prototyping.
+    public void HoverStation(TeamStation station)
+    {
+        hoveringStation = station;
+    }
+
+    public void UnhoverStation()
+    {
+        hoveringStation = null;
+    }
+
     public void AssignEmployee()
     {
-
+        currentEmployee.gameObject.SetActive(false);
+        hoveringStation.AddEmployee(currentEmployee);
     }
 
     public void ReturnEmployee()

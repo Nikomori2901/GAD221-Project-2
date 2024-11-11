@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class TeamStation : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public List<Employee> employees = new List<Employee>();
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void AddEmployee(Employee employee)
+    {
+        employees.Add(employee);
+    }
+
+    public void RemoveEmployee()
+    {
+
     }
 }

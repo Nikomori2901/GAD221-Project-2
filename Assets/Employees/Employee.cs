@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Employee : MonoBehaviour
 {
+    public Collider2D collider;
+
     [SerializeField] public string employeeName;
     [SerializeField] public int employeeMorale;
 
@@ -18,6 +20,11 @@ public class Employee : MonoBehaviour
     [SerializeField] UnityEvent<Employee> onMouseDown;
 
     public bool grabbed = false;
+
+    void Start()
+    {
+        collider = GetComponent<Collider2D>();
+    }
 
     public void Initialize(string name, int morale, int design, int programming, int art, int audio)
     {
@@ -38,25 +45,11 @@ public class Employee : MonoBehaviour
     private void OnMouseExit()
     {
         Debug.Log("Unhover");
-        if (!grabbed)
-        {
-            hideTooltip.Invoke(gameObject);
-        }
+        hideTooltip.Invoke(gameObject);
     }
 
     private void OnMouseDown()
     {
-        grabbed = true;
         onMouseDown.Invoke(this);
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 }
