@@ -13,11 +13,7 @@ public class EmployeeGrabber : MonoBehaviour
     void Start()
     {
         InputHandler.current.onM1Up += ReleaseEmployee;
-    }
-
-    void Update()
-    {
-        
+        EventHandler.EmployeeClicked += GrabEmployee;
     }
 
     public void GrabEmployee(Employee employee)
@@ -47,7 +43,7 @@ public class EmployeeGrabber : MonoBehaviour
     {
         if (currentlyHolding)
         {
-            if (hoveringStation != null)
+            if (hoveringStation)
             {
                 AssignEmployee();
             }
@@ -75,6 +71,9 @@ public class EmployeeGrabber : MonoBehaviour
     {
         currentEmployee.gameObject.SetActive(false);
         hoveringStation.AddEmployee(currentEmployee);
+        EventHandler.OnEmployeeAssigned(currentEmployee);
+        ClearEmployee();
+        EmployeeSpawner.instance.NextEmployee();
     }
 
     public void ReturnEmployee()

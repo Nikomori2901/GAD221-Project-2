@@ -18,8 +18,18 @@ public class Tooltip : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
+    
+    public void ShowTooltip<T>(T eventArgs)
+    {
+        gameObject.SetActive(true);
+    }
 
     public void HideTooltip()
+    {
+        gameObject.SetActive(false);
+    }
+    
+    public void HideTooltip<T>(T eventArgs)
     {
         gameObject.SetActive(false);
     }

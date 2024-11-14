@@ -15,10 +15,6 @@ public class Employee : MonoBehaviour
     [SerializeField] public int artSkill;
     [SerializeField] public int audioSkill;
 
-    [SerializeField] UnityEvent<GameObject> showTooltip;
-    [SerializeField] UnityEvent<GameObject> hideTooltip;
-    [SerializeField] UnityEvent<Employee> onMouseDown;
-
     public bool grabbed = false;
 
     void Start()
@@ -38,18 +34,18 @@ public class Employee : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("Hover");
-        showTooltip.Invoke(gameObject);
+        //Debug.Log("Hover");
+        EventHandler.OnEmployeeHover(this);
     }
 
     private void OnMouseExit()
     {
-        Debug.Log("Unhover");
-        hideTooltip.Invoke(gameObject);
+        //Debug.Log("Unhover");
+        EventHandler.OnEmployeeUnhover(this);
     }
 
     private void OnMouseDown()
     {
-        onMouseDown.Invoke(this);
+        EventHandler.OnEmployeeClick(this);
     }
 }

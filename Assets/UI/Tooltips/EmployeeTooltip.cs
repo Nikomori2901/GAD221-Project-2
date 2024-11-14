@@ -13,6 +13,13 @@ public class EmployeeTooltip : Tooltip
     [SerializeField] TMP_Text artText;
     [SerializeField] TMP_Text audioText;
 
+    void Start()
+    {
+        EventHandler.EmployeeHovered += SetEmployeeInfo;
+        EventHandler.EmployeeHovered += SetEmployeeInfo;
+        EventHandler.EmployeeUnhovered += HideTooltip;
+    }
+    
     public void SetEmployeeInfo(Employee employee)
     {
         nameText.text = employee.employeeName;
