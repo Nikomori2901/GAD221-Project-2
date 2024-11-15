@@ -293,12 +293,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221023741}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 712, y: 608, z: -1970.5293}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 187, y: 243, z: -1970.5293}
   m_LocalScale: {x: 6.8968, y: 6.8968, z: 6.8968}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 488977405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234032243
 GameObject:
@@ -326,7 +326,7 @@ Transform:
   m_GameObject: {fileID: 234032243}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -244, y: 221.60046, z: -1897.7732}
+  m_LocalPosition: {x: -119, y: 221.60046, z: -1897.7732}
   m_LocalScale: {x: 7.0369, y: 7.0369, z: 7.0369}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -660,6 +660,7 @@ RectTransform:
   - {fileID: 1320255083}
   - {fileID: 664493058}
   - {fileID: 234032244}
+  - {fileID: 221023743}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -693,7 +694,7 @@ Transform:
   m_GameObject: {fileID: 664493057}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -528, y: 219, z: -1885.4092}
+  m_LocalPosition: {x: -412, y: 219, z: -1885.4092}
   m_LocalScale: {x: 6.9842, y: 6.9842, z: 6.9842}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -829,7 +830,7 @@ Transform:
   m_GameObject: {fileID: 1293741023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 994, y: 587, z: -1985.8542}
+  m_LocalPosition: {x: 1123, y: 587, z: -1985.8542}
   m_LocalScale: {x: 5.8881, y: 5.8881, z: 5.8881}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1162,6 +1163,5 @@ SceneRoots:
   - {fileID: 234715125}
   - {fileID: 215327648}
   - {fileID: 1471902130}
-  - {fileID: 488977405}
-  - {fileID: 221023743}
   - {fileID: 1293741025}
+  - {fileID: 488977405}
