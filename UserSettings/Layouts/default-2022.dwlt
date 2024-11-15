@@ -922,10 +922,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 318
-    y: 73
-    width: 1209
-    height: 645
+    x: 904
+    y: 95
+    width: 1336
+    height: 751
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1055,12 +1055,12 @@ MonoBehaviour:
       oldMaxSizes: 
       oldSplitSize: 0
     m_HorizontalSplitter:
-      ID: 16136
+      ID: 3952
       splitterInitialOffset: 256
       currentActiveSplitter: -1
       realSizes:
-      - 160
-      - 1049
+      - 173
+      - 1163
       relativeSizes:
       - 0.12933199
       - 0.870668
@@ -1070,7 +1070,7 @@ MonoBehaviour:
       maxSizes:
       - 0
       - 0
-      lastTotalSize: 1209
+      lastTotalSize: 1336
       splitSize: 6
       xOffset: 0
       m_Version: 1
@@ -1202,7 +1202,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 546b0000
     m_LastClickedInstanceID: 27476
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300000a8600002ea00200aa8500006cc300006c4e0000c2580000
+    m_ExpandedInstanceIDs: c62300000a8600002ea00200aa8500006cc300006c4e0000c258000006440000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

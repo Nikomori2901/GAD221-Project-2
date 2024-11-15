@@ -53,6 +53,6 @@ public class Timer : MonoBehaviour
     private void UpdateTimerText()
     {
         Debug.Log(secondsLeft);
-        textUI.text = secondsLeft.ToString();
+        textUI.text = "Time Left: " + secondsLeft.ToString();
     }
 }

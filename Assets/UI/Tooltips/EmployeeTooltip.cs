@@ -27,10 +27,10 @@ public class EmployeeTooltip : Tooltip
     {
         Debug.Log("SetEmployeeInfo");
         nameText.text = employee.employeeName;
-        moraleText.text = "Morale: " + employee.employeeMorale;
-        designText.text = "Design: " + employee.designSkill;
-        programmingText.text = "Programming: " + employee.programmingSkill;
-        artText.text = "Art: " + employee.artSkill;
-        audioText.text = "Audio: " + employee.audioSkill;
+        moraleText.text = "Morale\n" + employee.employeeMorale.ToString();
+        designText.text = employee.designSkill.ToString();
+        programmingText.text = employee.programmingSkill.ToString();
+        artText.text = employee.artSkill.ToString();
+        audioText.text = employee.audioSkill.ToString();
     }
 }

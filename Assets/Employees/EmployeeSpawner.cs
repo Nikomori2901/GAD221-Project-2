@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EmployeeSpawner : MonoBehaviour
 {
     public static EmployeeSpawner instance;
+    
+    public TMP_Text employeesLeftText;
     
     public List<Employee> employees = new List<Employee>();
     public GameObject employeePrefab;
@@ -49,6 +52,8 @@ public class EmployeeSpawner : MonoBehaviour
 
     public void NextEmployee()
     {
+        UpdateEmployeesLeftText();
+        
         if (employees.Count > 0)
         {
             employees[Random.Range(0, employees.Count)].gameObject.SetActive(true);
@@ -69,7 +74,12 @@ public class EmployeeSpawner : MonoBehaviour
 
     private string RandomName()
     {
-        return " ";
+        return "Employee";
         // low priority will add later
+    }
+
+    private void UpdateEmployeesLeftText()
+    {
+        employeesLeftText.text = "Employees Left: " + employees.Count.ToString();
     }
 }
