@@ -17,7 +17,7 @@ public static class EventHandler
         EmployeeHovered?.Invoke(employee);
     }
 
-    public static void OnEmployeeUnhover(Employee employee) 
+    public static void OnEmployeeUnhover(Employee employee)
     {
         EmployeeUnhovered?.Invoke(employee);
     }
