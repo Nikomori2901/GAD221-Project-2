@@ -16,21 +16,25 @@ public class Tooltip : MonoBehaviour
 
     public void ShowTooltip()
     {
+        Debug.Log("ShowTooltip");
         gameObject.SetActive(true);
     }
     
     public void ShowTooltip<T>(T eventArgs)
     {
+        Debug.Log("ShowTooltip");
         gameObject.SetActive(true);
     }
 
     public void HideTooltip()
     {
+        Debug.Log("HideTooltip");
         gameObject.SetActive(false);
     }
     
     public void HideTooltip<T>(T eventArgs)
     {
+        Debug.Log("HideTooltip");
         gameObject.SetActive(false);
     }
 }

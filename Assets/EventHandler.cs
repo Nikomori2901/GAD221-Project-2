@@ -12,10 +12,12 @@ public static class EventHandler
 
     public static void OnEmployeeHover(Employee employee)
     {
+        Debug.Log("OnEmployeeHover");
+        
         EmployeeHovered?.Invoke(employee);
     }
 
-    public static void OnEmployeeUnhover(Employee employee)
+    public static void OnEmployeeUnhover(Employee employee) 
     {
         EmployeeUnhovered?.Invoke(employee);
     }

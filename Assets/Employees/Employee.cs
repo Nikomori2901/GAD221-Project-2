@@ -34,7 +34,7 @@ public class Employee : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        //Debug.Log("Hover");
+        Debug.Log("Employee Hover");
         EventHandler.OnEmployeeHover(this);
     }
 
