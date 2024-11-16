@@ -10,8 +10,6 @@ public class PhaseManager : MonoBehaviour
     // Work Phase - Play minigames to help teams complete work and prevent teams from losing morale
     // Event Phase - WIP not part of prototype 1
     
-    
-    
     void Awake()
     {
         instance = this;
@@ -27,5 +25,5 @@ public class PhaseManager : MonoBehaviour
         
     }
     
-    public void 
+    //public void 
 }
