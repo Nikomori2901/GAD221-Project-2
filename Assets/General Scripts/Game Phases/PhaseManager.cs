@@ -52,7 +52,7 @@ public class PhaseManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.05f);
 
         startEvent();
     }
@@ -61,7 +61,7 @@ public class PhaseManager : MonoBehaviour
     {
         stopEvent();
         
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.05f);
         
         SceneManager.UnloadSceneAsync(sceneName);
     }

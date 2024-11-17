@@ -60,12 +60,13 @@ public class ArtProgressBar : MonoBehaviour
 
         else
         {
-            Debug.Log("Victory Fail");
+            Debug.Log("Victory Fail");  
         }
     }
 
     void Victory()
     {
+        MinigameVictory.instance.SuccessSFX();
         TextInstruction.SetActive(false);
         ProgressBar.SetActive(false);
         TextVictory.SetActive(true);

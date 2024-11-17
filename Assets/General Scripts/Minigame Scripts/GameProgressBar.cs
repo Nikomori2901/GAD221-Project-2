@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundProgressBar : MonoBehaviour
+public class GameProgressBar : MonoBehaviour
 {
     public int MaxProgress = 20;
     public int MinProgress = 0;
@@ -12,7 +12,7 @@ public class SoundProgressBar : MonoBehaviour
     public GameObject ProgressBar;
     public GameObject TextInstruction;
     public GameObject TextVictory;
-    public GameObject SoundImage;
+    public GameObject GameImage;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class SoundProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             IncreaseProgress(2);
 
@@ -32,6 +32,7 @@ public class SoundProgressBar : MonoBehaviour
 
         if (CurrentProgress == MaxProgress)
         {
+            MinigameVictory.instance.SuccessSFX();
             TextInstruction.SetActive(false);
             ProgressBar.SetActive(false);
             TextVictory.SetActive(true);
@@ -48,6 +49,6 @@ public class SoundProgressBar : MonoBehaviour
     IEnumerator DeactivateVictoryScreen()
     {
         yield return new WaitForSeconds(2);
-        SoundImage.SetActive(false);
+        GameImage.SetActive(false);
     }
 }
