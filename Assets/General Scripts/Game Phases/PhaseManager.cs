@@ -23,7 +23,7 @@ public class PhaseManager : MonoBehaviour
     
     void Start()
     {
-        
+        SceneManager.LoadScene("EmployeeAssignment", LoadSceneMode.Additive);
     }
     
     void Update()
