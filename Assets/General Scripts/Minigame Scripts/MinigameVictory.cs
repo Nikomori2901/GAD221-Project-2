@@ -7,21 +7,18 @@ public class MinigameVictory : MonoBehaviour
 {
     public static MinigameVictory instance;
     
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     
     void Awake()
     {
         instance = this;
-    }
-    
-    private void Start()
-    {
         audioSource = GetComponent<AudioSource>();
     }
     
     [Button]
-    public void SuccessSFX()
+    public static void SuccessSFX()
     {
-        audioSource.Play();
+        Debug.Log("SuccessSFX");
+        instance.audioSource.Play();
     }
 }

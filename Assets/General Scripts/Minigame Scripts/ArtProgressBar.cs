@@ -66,7 +66,7 @@ public class ArtProgressBar : MonoBehaviour
 
     void Victory()
     {
-        MinigameVictory.instance.SuccessSFX();
+        MinigameVictory.SuccessSFX();
         TextInstruction.SetActive(false);
         ProgressBar.SetActive(false);
         TextVictory.SetActive(true);
@@ -77,5 +77,6 @@ public class ArtProgressBar : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         ArtImage.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

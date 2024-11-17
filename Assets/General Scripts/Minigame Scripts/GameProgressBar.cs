@@ -27,28 +27,44 @@ public class GameProgressBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             IncreaseProgress(2);
-
         }
-
-        if (CurrentProgress == MaxProgress)
+    }
+    
+    void CheckVictory()
+    {
+        Debug.Log(CurrentProgress + "=" + MaxProgress);
+        if (CurrentProgress >= MaxProgress)
         {
-            MinigameVictory.instance.SuccessSFX();
-            TextInstruction.SetActive(false);
-            ProgressBar.SetActive(false);
-            TextVictory.SetActive(true);
-            StartCoroutine(DeactivateVictoryScreen());
+            Debug.Log("Victory Success");
+            Victory();
         }
+
+        else
+        {
+            Debug.Log("Victory Fail");  
+        }
+    }
+
+    void Victory()
+    {
+        MinigameVictory.SuccessSFX();
+        TextInstruction.SetActive(false);
+        ProgressBar.SetActive(false);
+        TextVictory.SetActive(true);
+        StartCoroutine(DeactivateVictoryScreen());
     }
 
     void IncreaseProgress(int progress)
     {
         CurrentProgress += progress;
         GeneralSlider.SetProgress(CurrentProgress);
+        CheckVictory();
     }
 
     IEnumerator DeactivateVictoryScreen()
     {
         yield return new WaitForSeconds(2);
         GameImage.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

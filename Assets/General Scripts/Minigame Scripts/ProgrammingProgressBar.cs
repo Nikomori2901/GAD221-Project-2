@@ -29,15 +29,30 @@ public class ProgrammingProgressBar : MonoBehaviour
             IncreaseProgress(2);
            
         }
-
-        if (CurrentProgress == MaxProgress)
+    }
+    
+    void CheckVictory()
+    {
+        Debug.Log(CurrentProgress + "=" + MaxProgress);
+        if (CurrentProgress >= MaxProgress)
         {
-            MinigameVictory.instance.SuccessSFX();
-            TextInstruction.SetActive(false);
-            ProgressBar.SetActive(false);
-            TextVictory.SetActive(true);
-            StartCoroutine(DeactivateVictoryScreen());
-        } 
+            Debug.Log("Victory Success");
+            Victory();
+        }
+
+        else
+        {
+            Debug.Log("Victory Fail");  
+        }
+    }
+
+    void Victory()
+    {
+        MinigameVictory.SuccessSFX();
+        TextInstruction.SetActive(false);
+        ProgressBar.SetActive(false);
+        TextVictory.SetActive(true);
+        StartCoroutine(DeactivateVictoryScreen());
     }
 
     void IncreaseProgress(int progress)
@@ -45,12 +60,14 @@ public class ProgrammingProgressBar : MonoBehaviour
         CurrentProgress += progress;
         GeneralSlider.SetProgress(CurrentProgress);
         Debug.Log(CurrentProgress + "=" + MaxProgress);
+        CheckVictory();
     }
 
     IEnumerator DeactivateVictoryScreen()
     {
         yield return new WaitForSeconds(2);
         ProgrammingImage.SetActive(false);
+        gameObject.SetActive(false);
     }
 
 }

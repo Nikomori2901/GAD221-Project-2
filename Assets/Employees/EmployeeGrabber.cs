@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EmployeeGrabber : MonoBehaviour
 {
+    private AudioSource audioSource;
+    
     public Employee currentEmployee;
     public bool currentlyHolding;
     public TeamStation hoveringStation;
@@ -12,6 +14,8 @@ public class EmployeeGrabber : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        
         InputHandler.current.onM1Up += ReleaseEmployee;
         EventHandler.EmployeeClicked += GrabEmployee;
     }
@@ -20,6 +24,7 @@ public class EmployeeGrabber : MonoBehaviour
     {
         if (!currentlyHolding)
         {
+            audioSource.Play();
             currentEmployee = employee;
             currentEmployee.collider.enabled = false;
             currentlyHolding = true;
