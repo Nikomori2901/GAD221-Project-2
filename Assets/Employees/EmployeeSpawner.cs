@@ -68,8 +68,7 @@ public class EmployeeSpawner : MonoBehaviour
     private void EndAssignmentPhase()
     {
         Debug.Log("EndAssignmentPhase");
-        // go to next phase of game
-        // should probably go in phase manager
+        PhaseManager.instance.NextPhase();
     }
 
     private string RandomName()

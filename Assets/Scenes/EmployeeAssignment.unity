@@ -2651,8 +2651,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294957144
+  m_fontColor: {r: 0.3443396, g: 0.84898204, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3080,7 +3080,7 @@ MonoBehaviour:
   employees: []
   employeePrefab: {fileID: 1989129287184889968, guid: 0ac9cb54a9add4543a89f258bf3990a1, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
-  initialRosterSize: 5
+  initialRosterSize: 10
 --- !u!4 &1738424346
 Transform:
   m_ObjectHideFlags: 0
@@ -3091,51 +3091,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.192655, y: 2.1176012, z: -3.3449996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1776608603
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1776608605}
-  - component: {fileID: 1776608604}
-  m_Layer: 0
-  m_Name: InputHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1776608604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776608603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33de2d52c54f3854f9edd5b67b441714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logInputs: 1
---- !u!4 &1776608605
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776608603}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3682,7 +3637,6 @@ SceneRoots:
   - {fileID: 530213709}
   - {fileID: 331145352}
   - {fileID: 1341986281}
-  - {fileID: 1776608605}
   - {fileID: 1225386257}
   - {fileID: 747150536}
   - {fileID: 1150129110}
