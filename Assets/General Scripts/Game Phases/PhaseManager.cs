@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PhaseManager : MonoBehaviour
 {
     public static PhaseManager instance;
-    private string _currentPhaseSceneName = "EmployeeAssignment";
+    private string _currentPhaseSceneName = "Start";
     
     public enum GamePhases {Assignment, Work, Event}
     // Assignment Phase - Assign roster of employees to different teams based on their stats
@@ -23,7 +23,9 @@ public class PhaseManager : MonoBehaviour
     
     void Start()
     {
-        SceneManager.LoadScene("EmployeeAssignment", LoadSceneMode.Additive);
+        StartCoroutine(LoadGamePhase("EmployeeAssignment", EventHandler.OnEmployeeAssignmentStart));
+        
+        Timer.onTimerFinished += NextPhase;
     }
     
     void Update()
@@ -33,6 +35,8 @@ public class PhaseManager : MonoBehaviour
     
     public void NextPhase()
     {
+        Debug.Log("NextPhase");
+        
         switch (_currentPhaseSceneName)
         {
             case "EmployeeAssignment":
@@ -40,9 +44,11 @@ public class PhaseManager : MonoBehaviour
                 // If there's issues might have to make load wait for unload to finish
                 StartCoroutine(LoadGamePhase("WorkDay", EventHandler.OnWorkdayStart));
                 break;
+            
             case "WorkDay":
                 //LoadGamePhase("WorkDay");
                 break;
+            
             default:
                 break;
         }
@@ -54,6 +60,7 @@ public class PhaseManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.05f);
 
+        _currentPhaseSceneName = sceneName;
         startEvent();
     }
     

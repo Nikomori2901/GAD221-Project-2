@@ -12,7 +12,6 @@ public static class EventHandler
     public static event Action EmployeeAssignmentStart;
     public static event Action EmployeeAssignmentEnd;
     public static event Action WorkDayStart;
-
     public static event Action WorkDayEnd;
         
     public static void OnEmployeeHover(Employee employee)
@@ -39,6 +38,7 @@ public static class EventHandler
 
     public static void OnEmployeeAssignmentStart()
     {
+        Debug.Log("OnEmployeeAssignmentStart");
         EmployeeAssignmentStart?.Invoke();
     }
     

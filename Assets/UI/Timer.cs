@@ -3,25 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VInspector;
 
 public class Timer : MonoBehaviour
 {
-    TMP_Text textUI;
+    private TMP_Text _textUI;
 
-    public float secondsLeft;
+    public int timerLength;
+    private int _secondsLeft;
 
     public static Action onTimerFinished;
 
-    void Start()
+    private void Start()
     {
-        textUI = GetComponent<TMP_Text>();
+        _textUI = GetComponent<TMP_Text>();
+        
+        EventHandler.EmployeeAssignmentStart += StartTimer;
     }
 
     [Button]
     public void StartTimer()
     {
         Debug.Log("Start Timer");
+        _secondsLeft = timerLength;
         StartCoroutine(TimerLoop());
     }
 
@@ -30,15 +35,19 @@ public class Timer : MonoBehaviour
     {
         Debug.Log("Stop Timer");
         StopAllCoroutines();
+        if (onTimerFinished != null)
+        {
+            onTimerFinished();
+        }
     }
 
     private IEnumerator TimerLoop()
     {
-        while (secondsLeft > 0)
+        while (_secondsLeft > 0)
         {
             yield return new WaitForSeconds(1);
 
-            secondsLeft--;
+            _secondsLeft--;
             UpdateTimerText();
         }
 
@@ -52,7 +61,7 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        Debug.Log(secondsLeft);
-        textUI.text = "Time Left: " + secondsLeft.ToString();
+        Debug.Log(_secondsLeft);
+        _textUI.text = "Time Left: " + _secondsLeft.ToString();
     }
 }
