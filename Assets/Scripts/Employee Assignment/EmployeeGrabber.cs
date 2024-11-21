@@ -8,7 +8,7 @@ public class EmployeeGrabber : MonoBehaviour
     
     public Employee currentEmployee;
     public bool currentlyHolding;
-    public TeamStation hoveringStation;
+    public EmployeeStation hoveringStation;
 
     private Vector3 employeeOriginalPos;
 
@@ -62,7 +62,7 @@ public class EmployeeGrabber : MonoBehaviour
     }
 
     // The two hover functions would probably be better off as a raycast but this is a simple solution for prototyping.
-    public void HoverStation(TeamStation station)
+    public void HoverStation(EmployeeStation station)
     {
         hoveringStation = station;
     }
@@ -75,7 +75,7 @@ public class EmployeeGrabber : MonoBehaviour
     public void AssignEmployee()
     {
         currentEmployee.gameObject.SetActive(false);
-        hoveringStation.AddEmployee(currentEmployee);
+        hoveringStation.AssignEmployee(currentEmployee);
         EventHandler.OnEmployeeAssigned(currentEmployee);
         ClearEmployee();
         EmployeeSpawner.instance.NextEmployee();
