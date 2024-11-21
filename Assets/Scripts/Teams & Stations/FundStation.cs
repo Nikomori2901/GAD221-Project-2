@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VInspector;
 
 public class FundStation : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class FundStation : MonoBehaviour
     public void AllocateFunds()
     {
         _team.hasFunds = true;
+        gameObject.SetActive(false);
     }
 
+    [Button]
     public void DeallocateFunds()
     {
         _team.hasFunds = false;
+        gameObject.SetActive(true);
     }
 }

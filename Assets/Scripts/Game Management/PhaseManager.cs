@@ -23,7 +23,8 @@ public class PhaseManager : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(LoadGamePhase("EmployeeAssignment", EventHandler.OnEmployeeAssignmentStart));
+        StartCoroutine(LoadGamePhase("FundAllocation", EventHandler.OnFundAllocationStart));
+        //StartCoroutine(LoadGamePhase("EmployeeAssignment", EventHandler.OnEmployeeAssignmentStart));
         
         Timer.onTimerFinished += NextPhase;
     }

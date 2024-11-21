@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class FundPile : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Collider2D collider;
+    
     void Start()
     {
-        
+        collider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        EventHandler.OnFundPileClicked(this);
+        Debug.Log("Fund Pile Clicked");
     }
 }

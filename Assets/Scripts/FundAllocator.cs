@@ -6,7 +6,10 @@ public class FundAllocator : MonoBehaviour
 {
     private AudioSource audioSource;
     
-    public Employee currentFundPile;
+    public List<FundPile> fundPiles = new List<FundPile>();
+    public List<FundStation> fundStations = new List<FundStation>();
+    
+    public FundPile currentFundPile;
     public bool currentlyHolding;
     public FundStation hoveringStation;
 
@@ -17,19 +20,18 @@ public class FundAllocator : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         
         InputHandler.current.onM1Up += ReleaseFunds;
-        
-        //EventHandler.FundPileClicked += GrabFundPile;
+        EventHandler.FundPileClicked += GrabFundPile;
     }
 
-    public void GrabFundPile(Employee employee)
+    public void GrabFundPile(FundPile fundPile)
     {
         if (!currentlyHolding)
         {
             audioSource.Play();
-            currentFundPile = employee;
+            currentFundPile = fundPile;
             currentFundPile.collider.enabled = false;
             currentlyHolding = true;
-            fundPileOriginalPos = employee.transform.position;
+            fundPileOriginalPos = fundPile.transform.position;
             StartCoroutine(Holding());
         }
     }
@@ -57,7 +59,7 @@ public class FundAllocator : MonoBehaviour
             else
             {
                 currentFundPile.collider.enabled = true;
-                ReturnEmployee();
+                ReturnFundPile();
             }
         }
     }
@@ -82,7 +84,7 @@ public class FundAllocator : MonoBehaviour
         //EmployeeSpawner.instance.NextEmployee();
     }
 
-    public void ReturnEmployee()
+    public void ReturnFundPile()
     {
         currentFundPile.transform.position = fundPileOriginalPos;
         Clear();
@@ -94,5 +96,25 @@ public class FundAllocator : MonoBehaviour
         currentlyHolding = false;
         fundPileOriginalPos = Vector3.zero;
         StopAllCoroutines();
+    }
+
+    public void Reset()
+    {
+        Clear();
+        
+        GameObject.Find("Programming Team").GetComponent<Team>().hasFunds = false;
+        GameObject.Find("Design Team").GetComponent<Team>().hasFunds = false;
+        GameObject.Find("Art Team").GetComponent<Team>().hasFunds = false;
+        GameObject.Find("Audio Team").GetComponent<Team>().hasFunds = false;
+
+        foreach (FundPile fundPile in fundPiles)
+        {
+            fundPile.gameObject.SetActive(true);
+        }
+        
+        foreach (FundStation fundStation in fundStations)
+        {
+            fundStation.gameObject.SetActive(true);
+        }
     }
 }
