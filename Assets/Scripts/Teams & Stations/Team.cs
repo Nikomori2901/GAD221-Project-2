@@ -153,5 +153,6 @@ public class Team : MonoBehaviour
     public void SpawnMinigame()
     {
         // providing the modifiers for the minigame and spawning it.
+        
     }
 }

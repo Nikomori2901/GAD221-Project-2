@@ -348,7 +348,7 @@ MonoBehaviour:
   teamType: 1
   assignedEmployees: []
   totalSkill: 0
-  hasResources: 0
+  hasFunds: 0
   minigameActive: 0
   morale: 0
   drainSpeed: 1
@@ -401,7 +401,7 @@ MonoBehaviour:
   teamType: 3
   assignedEmployees: []
   totalSkill: 0
-  hasResources: 0
+  hasFunds: 0
   minigameActive: 0
   morale: 0
   drainSpeed: 1
@@ -582,7 +582,7 @@ MonoBehaviour:
   teamType: 2
   assignedEmployees: []
   totalSkill: 0
-  hasResources: 0
+  hasFunds: 0
   minigameActive: 0
   morale: 0
   drainSpeed: 1
@@ -772,7 +772,7 @@ MonoBehaviour:
   teamType: 0
   assignedEmployees: []
   totalSkill: 0
-  hasResources: 0
+  hasFunds: 0
   minigameActive: 0
   morale: 0
   drainSpeed: 1
