@@ -109,6 +109,8 @@ public class FundAllocator : MonoBehaviour
 
         foreach (FundPile fundPile in fundPiles)
         {
+            fundPile.transform.position = fundPile.initPos;
+            fundPile.collider.enabled = true;
             fundPile.gameObject.SetActive(true);
         }
         
