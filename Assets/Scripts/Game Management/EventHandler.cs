@@ -5,15 +5,19 @@ using UnityEngine;
 
 public static class EventHandler
 {
+    // Employees Events
     public static event Action<Employee> EmployeeHovered;
     public static event Action<Employee> EmployeeUnhovered;
     public static event Action<Employee> EmployeeClicked;
     public static event Action<Employee> EmployeeAssigned;
     
+    // Funds Events
     public static event Action<FundPile> FundPileHovered;
     public static event Action<FundPile> FundPileUnhovered;
     public static event Action<FundPile> FundPileClicked;
     public static event Action<FundPile> FundPileAssigned;
+
+    public static event Action GameOver;
     
     // Phase Events
     public static event Action EmailPhaseStart;
@@ -126,6 +130,11 @@ public static class EventHandler
     public static void OnMainMenuPhaseEnd()
     {
         MainMenuPhaseEnd?.Invoke();
+    }
+
+    public static void OnGameOver()
+    {
+        GameOver?.Invoke();
     }
 
     public static void OnGameOverPhaseStart()

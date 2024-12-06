@@ -85,6 +85,17 @@ public class PhaseManager : MonoBehaviour
         startEvent();
     }
     
+    public IEnumerator LoadGamePhase(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        
+        yield return new WaitForSeconds(0.05f);
+        
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        
+        yield return new WaitForSeconds(0.05f);
+    }
+    
     public IEnumerator UnloadGamePhase(string sceneName, Action stopEvent)
     {
         stopEvent();
@@ -92,5 +103,28 @@ public class PhaseManager : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         
         SceneManager.UnloadSceneAsync(sceneName);
+    }
+    
+    public IEnumerator UnloadGamePhase(string sceneName)
+    {
+        yield return new WaitForSeconds(0.05f);
+        
+        SceneManager.UnloadSceneAsync(sceneName);
+    }
+
+    [Button]
+    public void MainMenu()
+    {
+        StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
+        StartCoroutine(LoadGamePhase("MainMenuScene", EventHandler.OnMainMenuPhaseStart));
+        _currentGamePhase = GamePhase.MainMenu;
+    }
+
+    [Button]
+    public void GameOver()
+    {
+        StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
+        StartCoroutine(LoadGamePhase("GameOverScene", EventHandler.OnGameOverPhaseStart));
+        _currentGamePhase = GamePhase.GameOver;
     }
 }
