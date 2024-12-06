@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -66,5 +67,10 @@ public class EmailPhase : MonoBehaviour
                 _emailtext.text = _emails[3];
                 break;
         }
+    }
+
+    public void NextDayButtonPress()
+    {
+        PhaseManager.instance.NextPhase();
     }
 }
