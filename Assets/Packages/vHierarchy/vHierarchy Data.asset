@@ -18,6 +18,7 @@ MonoBehaviour:
     - 87e845a3b7f54a74c8e28da5ba14268d
     - def85a2ade9cc1b4889a152fedf5c615
     - fa69f3f519ffa93468e90a4110e95e21
+    - df70709096fe0f14eadb36f7690e8868
     values:
     - goDatasByGlobalId:
         keys:
@@ -41,7 +42,6 @@ MonoBehaviour:
         - GlobalObjectId_V1-2-87e845a3b7f54a74c8e28da5ba14268d-404364264-0
         - GlobalObjectId_V1-2-87e845a3b7f54a74c8e28da5ba14268d-187461989-0
         - GlobalObjectId_V1-2-87e845a3b7f54a74c8e28da5ba14268d-366703027-0
-        - GlobalObjectId_V1-2-87e845a3b7f54a74c8e28da5ba14268d-1455790023-0
         - GlobalObjectId_V1-2-87e845a3b7f54a74c8e28da5ba14268d-32589940-0
         - GlobalObjectId_V1-2-87e845a3b7f54a74c8e28da5ba14268d-142248487-0
         - GlobalObjectId_V1-2-87e845a3b7f54a74c8e28da5ba14268d-1193448828-0
@@ -71,8 +71,6 @@ MonoBehaviour:
           icon: Canvas Icon
         - iColor: 8
           icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
         - iColor: 0
           icon: Favorite
         - iColor: 0
@@ -86,7 +84,7 @@ MonoBehaviour:
         - iColor: 6
           icon: cs Script Icon
       goDatasByInstanceId:
-        keys: 6e690000ecb6ffff086a0000d66900007ec7ffffd06900000e6a00009a690000f66900005e6900004c69000010b1ffffe46900003469000074c7ffff44690000b8690000ac69000088690000c4690000e4800000f68000007a810000508100000493ffff4a810000808100001481000068810000d4800000c6800000d08000005e810000ae800000fa92ffffbe8000003281000026810000028100003e810000288600003a860000be860000948600007491ffff8e860000c486000058860000ac860000188600000a86000014860000a2860000f2850000d691ffff02860000768600006a8600004686000082860000c6930000d89300005c940000329400002c94000062940000f69300004a940000b6930000a8930000b29300004094000090930000a09300001494000008940000e493000020940000
+        keys: de530000f05300006a5400004a54000044540000705400000e54000058540000ce530000c0530000ca530000a8530000b85300002c54000020540000fc53000038540000
         values:
         - iColor: 8
           icon: Canvas Icon
@@ -96,128 +94,6 @@ MonoBehaviour:
           icon: cs Script Icon
         - iColor: 5
           icon: cs Script Icon
-        - iColor: 8
-          icon: AvatarMask On Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 0
-          icon: Favorite
-        - iColor: 8
-          icon: AvatarMask On Icon
-        - iColor: 0
-          icon: Favorite
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 6
-          icon: AvatarMask On Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 8
-          icon: AvatarMask On Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 0
-          icon: Favorite
-        - iColor: 8
-          icon: AvatarMask On Icon
-        - iColor: 0
-          icon: Favorite
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 6
-          icon: AvatarMask On Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 8
-          icon: AvatarMask On Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 0
-          icon: Favorite
-        - iColor: 8
-          icon: AvatarMask On Icon
-        - iColor: 0
-          icon: Favorite
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 6
-          icon: cs Script Icon
-        - iColor: 8
-          icon: Canvas Icon
-        - iColor: 6
-          icon: AvatarMask On Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 8
-          icon: Canvas Icon
         - iColor: 8
           icon: Canvas Icon
         - iColor: 8
@@ -251,12 +127,8 @@ MonoBehaviour:
         - iColor: 0
           icon: 
       goDatasByInstanceId:
-        keys: 867400002a820000
-        values:
-        - iColor: 0
-          icon: 
-        - iColor: 0
-          icon: 
+        keys: 
+        values: []
     - goDatasByGlobalId:
         keys:
         - GlobalObjectId_V1-2-fa69f3f519ffa93468e90a4110e95e21-331145349-0
@@ -269,6 +141,8 @@ MonoBehaviour:
         - GlobalObjectId_V1-2-fa69f3f519ffa93468e90a4110e95e21-1805198659-0
         - GlobalObjectId_V1-2-fa69f3f519ffa93468e90a4110e95e21-1097667812-0
         - GlobalObjectId_V1-2-fa69f3f519ffa93468e90a4110e95e21-584950707-0
+        - GlobalObjectId_V1-2-fa69f3f519ffa93468e90a4110e95e21-1183324281-0
+        - GlobalObjectId_V1-2-fa69f3f519ffa93468e90a4110e95e21-32589940-0
         values:
         - iColor: 0
           icon: EventSystem Icon
@@ -290,8 +164,12 @@ MonoBehaviour:
           icon: AvatarMask On Icon
         - iColor: 5
           icon: AvatarMask On Icon
+        - iColor: 0
+          icon: Canvas Icon
+        - iColor: 0
+          icon: Canvas Icon
       goDatasByInstanceId:
-        keys: 56690000ee690000366a0000466a0000426a0000326a0000b6760000c8760000b0760000d0760000c4760000ac7600005c76ffff3476ffff0876ffffca75ffff9c75ffff
+        keys: 1c5000004050000016500000485000001250000024500000285000004e5000003a5000002e500000e0f4ffffa8530000
         values:
         - iColor: 0
           icon: EventSystem Icon
@@ -301,29 +179,25 @@ MonoBehaviour:
           icon: cs Script Icon
         - iColor: 5
           icon: cs Script Icon
-        - iColor: 5
-          icon: cs Script Icon
         - iColor: 2
           icon: AudioListener Icon
+        - iColor: 5
+          icon: AvatarMask On Icon
+        - iColor: 5
+          icon: AvatarMask On Icon
+        - iColor: 5
+          icon: AvatarMask On Icon
+        - iColor: 5
+          icon: AvatarMask On Icon
+        - iColor: 5
+          icon: AvatarMask On Icon
         - iColor: 0
-          icon: EventSystem Icon
-        - iColor: 9
-          icon: Camera Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 5
-          icon: cs Script Icon
-        - iColor: 2
-          icon: AudioListener Icon
-        - iColor: 5
-          icon: AvatarMask On Icon
-        - iColor: 5
-          icon: AvatarMask On Icon
-        - iColor: 5
-          icon: AvatarMask On Icon
-        - iColor: 5
-          icon: AvatarMask On Icon
-        - iColor: 5
-          icon: AvatarMask On Icon
+          icon: Canvas Icon
+        - iColor: 0
+          icon: Canvas Icon
+    - goDatasByGlobalId:
+        keys: []
+        values: []
+      goDatasByInstanceId:
+        keys: 
+        values: []

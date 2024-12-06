@@ -21,17 +21,18 @@ public class Timer : MonoBehaviour
     {
         _textUI = GetComponent<TMP_Text>();
         
-        //EventHandler.EmployeesPhaseStart += StartTimer;
-        //EventHandler.EmployeesPhaseEnd += StopTimer;
-        //EventHandler.FundsPhaseStart += StartTimer;
-        //EventHandler.FundsPhaseEnd += StopTimer;
+        EventHandler.EmployeesPhaseStart += StartTimer;
+        EventHandler.EmployeesPhaseEnd += StopTimer;
+        EventHandler.FundsPhaseStart += StartTimer;
+        EventHandler.FundsPhaseEnd += StopTimer;
     }
 
     [Button]
     public void StartTimer()
     {
         Debug.Log("Start Timer");
-        _secondsLeft = timerLength;
+        
+        ResetTimer();
         StartCoroutine(TimerLoop());
     }
 
@@ -39,11 +40,15 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         Debug.Log("Stop Timer");
+        
+        ResetTimer();
+    }
+
+    private void ResetTimer()
+    {
+        Debug.Log("Reset Timer");
         StopAllCoroutines();
-        if (onTimerFinished != null)
-        {
-            onTimerFinished();
-        }
+        _secondsLeft = timerLength;
     }
 
     private IEnumerator TimerLoop()
@@ -58,7 +63,7 @@ public class Timer : MonoBehaviour
 
         Debug.Log("Timer Finished");
 
-        if (onTimerFinished != null)
+        if (_secondsLeft == 0 && onTimerFinished != null)
         {
             onTimerFinished();
         }
