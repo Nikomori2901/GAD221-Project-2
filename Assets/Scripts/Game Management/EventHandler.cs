@@ -15,14 +15,18 @@ public static class EventHandler
     public static event Action<FundPile> FundPileClicked;
     public static event Action<FundPile> FundPileAssigned;
     
-    public static event Action EmployeeAssignmentStart;
-    public static event Action EmployeeAssignmentEnd;
+    // Phase Events
+    public static event Action EmailPhaseStart;
+    public static event Action EmailPhaseEnd;
     
-    public static event Action FundAllocationStart;
-    public static event Action FundAllocationEnd;
+    public static event Action EmployeesPhaseStart;
+    public static event Action EmployeesPhaseEnd;
     
-    public static event Action WorkDayStart;
-    public static event Action WorkDayEnd;
+    public static event Action FundsPhaseStart;
+    public static event Action FundsPhaseEnd;
+    
+    public static event Action MinigamesPhaseStart;
+    public static event Action MinigamesPhaseEnd;
         
     public static void OnEmployeeHover(Employee employee)
     {
@@ -66,34 +70,45 @@ public static class EventHandler
         FundPileAssigned?.Invoke(fundPile);
     }
 
-    public static void OnEmployeeAssignmentStart()
+    // Phase Event Invocators
+    public static void OnEmailPhaseStart()
+    {
+        EmailPhaseStart?.Invoke();
+    }
+    
+    public static void OnEmailPhaseEnd()
+    {
+        EmailPhaseEnd?.Invoke();
+    }
+    
+    public static void OnEmployeesPhaseStart()
     {
         Debug.Log("OnEmployeeAssignmentStart");
-        EmployeeAssignmentStart?.Invoke();
+        EmployeesPhaseStart?.Invoke();
     }
     
-    public static void OnEmployeeAssignmentEnd()
+    public static void OnEmployeesPhaseEnd()
     {
-        EmployeeAssignmentEnd?.Invoke();
+        EmployeesPhaseEnd?.Invoke();
     }
 
-    public static void OnFundAllocationStart()
+    public static void OnFundsPhaseStart()
     {
-        FundAllocationStart?.Invoke();
+        FundsPhaseStart?.Invoke();
     }
     
-    public static void OnFundAllocationEnd()
+    public static void OnFundsPhaseEnd()
     {
-        FundAllocationEnd?.Invoke();
+        FundsPhaseEnd?.Invoke();
     }
     
-    public static void OnWorkdayStart()
+    public static void OnMinigamesPhaseStart()
     {
-        WorkDayStart?.Invoke();
+        MinigamesPhaseStart?.Invoke();
     }
     
-    public static void OnWorkdayEnd()
+    public static void OnMinigamesPhaseEnd()
     {
-        WorkDayEnd?.Invoke();
+        MinigamesPhaseEnd?.Invoke();
     }
 }

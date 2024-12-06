@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game Management.unity
+    path: Assets/Scenes/GameManagementScene.unity
     guid: fa69f3f519ffa93468e90a4110e95e21
   - enabled: 1
-    path: Assets/Scenes/EmployeeAssignment.unity
+    path: Assets/Scenes/EmployeesScene.unity
     guid: 87e845a3b7f54a74c8e28da5ba14268d
   - enabled: 1
-    path: Assets/Scenes/WorkDay.unity
+    path: Assets/Scenes/MinigamesScene.unity
     guid: def85a2ade9cc1b4889a152fedf5c615
   m_configObjects: {}

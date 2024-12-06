@@ -31,6 +31,7 @@ public class EmployeeSpawner : MonoBehaviour
     
     private void GenerateInitialRoster()
     {
+        Debug.Log("Initializing Roster");
         for (int i = 0; i < initialRosterSize; i++)
         {
             NewEmployee();

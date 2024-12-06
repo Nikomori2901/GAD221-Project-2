@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
     {
         _textUI = GetComponent<TMP_Text>();
         
-        EventHandler.EmployeeAssignmentStart += StartTimer;
+        EventHandler.EmployeesPhaseStart += StartTimer;
     }
 
     [Button]

@@ -3,18 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VInspector;
 
 public class PhaseManager : MonoBehaviour
 {
     public static PhaseManager instance;
-    private string _currentPhaseSceneName = "Start";
     
-    public enum GamePhases {Assignment, Work, Event}
-    // Assignment Phase - Assign roster of employees to different teams based on their stats
-    
-    // Work Phase - Play minigames to help teams complete work and prevent teams from losing morale
-    
-    // Event Phase - WIP not part of prototype 1
+    public enum GamePhase {Email, Employees, Funds, Minigames}
+
+    private GamePhase _currentGamePhase;
     
     void Awake()
     {
@@ -23,36 +20,43 @@ public class PhaseManager : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(LoadGamePhase("FundAllocation", EventHandler.OnFundAllocationStart));
-        //StartCoroutine(LoadGamePhase("EmployeeAssignment", EventHandler.OnEmployeeAssignmentStart));
+        // Set Inital Phase to Email Phase
+        _currentGamePhase = GamePhase.Email;
+        StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
         
         Timer.onTimerFinished += NextPhase;
     }
     
-    void Update()
-    {
-        
-    }
-    
-    public void NextPhase()
+    [Button]
+    public void NextPhase() // Unload the Current Phase & Load the next one
     {
         Debug.Log("NextPhase");
         
-        switch (_currentPhaseSceneName)
+        switch (_currentGamePhase)
         {
-            case "EmployeeAssignment":
-                // Employee Assignment Effects
-                StartCoroutine(UnloadGamePhase("EmployeeAssignment", EventHandler.OnEmployeeAssignmentEnd));
-                // If there's issues might have to make load wait for unload to finish
-                StartCoroutine(LoadGamePhase("WorkDay", EventHandler.OnWorkdayStart));
-                break;
+            case GamePhase.Email:
+                StartCoroutine(UnloadGamePhase("EmailScene", EventHandler.OnEmailPhaseEnd));
+                StartCoroutine(LoadGamePhase("EmployeesScene", EventHandler.OnEmployeesPhaseStart));
+                _currentGamePhase = GamePhase.Employees;
+            break;
             
-            case "WorkDay":
-                //LoadGamePhase("WorkDay");
-                break;
+            case GamePhase.Employees:
+                StartCoroutine(UnloadGamePhase("EmployeesScene", EventHandler.OnEmployeesPhaseEnd));
+                StartCoroutine(LoadGamePhase("FundsScene", EventHandler.OnFundsPhaseStart));
+                _currentGamePhase = GamePhase.Funds;
+            break;
             
-            default:
-                break;
+            case GamePhase.Funds:
+                StartCoroutine(UnloadGamePhase("FundsScene", EventHandler.OnFundsPhaseEnd));
+                StartCoroutine(LoadGamePhase("MinigamesScene", EventHandler.OnMinigamesPhaseStart));
+                _currentGamePhase = GamePhase.Minigames;
+            break;
+            
+            case GamePhase.Minigames:
+                StartCoroutine(UnloadGamePhase("MinigamesScene", EventHandler.OnMinigamesPhaseEnd));
+                StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
+                _currentGamePhase = GamePhase.Email;
+            break;
         }
     }
     
@@ -61,8 +65,11 @@ public class PhaseManager : MonoBehaviour
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         
         yield return new WaitForSeconds(0.05f);
-
-        _currentPhaseSceneName = sceneName;
+        
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        
+        yield return new WaitForSeconds(0.05f);
+        
         startEvent();
     }
     
