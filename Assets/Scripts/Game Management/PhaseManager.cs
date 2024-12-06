@@ -9,7 +9,7 @@ public class PhaseManager : MonoBehaviour
 {
     public static PhaseManager instance;
     
-    public enum GamePhase {Email, Employees, Funds, Minigames}
+    public enum GamePhase {Email, Employees, Funds, Minigames, GameOver, MainMenu}
 
     private GamePhase _currentGamePhase;
     
@@ -21,8 +21,8 @@ public class PhaseManager : MonoBehaviour
     void Start()
     {
         // Set Inital Phase to Email Phase
-        _currentGamePhase = GamePhase.Email;
-        StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
+        _currentGamePhase = GamePhase.MainMenu;
+        StartCoroutine(LoadGamePhase("MainMenuScene", EventHandler.OnMainMenuPhaseStart));
         
         Timer.onTimerFinished += NextPhase;
     }
@@ -57,6 +57,18 @@ public class PhaseManager : MonoBehaviour
                 StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
                 _currentGamePhase = GamePhase.Email;
             break;
+            
+            case GamePhase.MainMenu:
+                StartCoroutine(UnloadGamePhase("MainMenuScene", EventHandler.OnMainMenuPhaseEnd));
+                StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
+                _currentGamePhase = GamePhase.Email;
+                break;
+            
+            case GamePhase.GameOver:
+                StartCoroutine(UnloadGamePhase("GameOverScene", EventHandler.OnGameOverPhaseEnd));
+                StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
+                _currentGamePhase = GamePhase.Email;
+                break;
         }
     }
     

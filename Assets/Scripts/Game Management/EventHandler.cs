@@ -27,6 +27,12 @@ public static class EventHandler
     
     public static event Action MinigamesPhaseStart;
     public static event Action MinigamesPhaseEnd;
+    
+    public static event Action MainMenuPhaseStart;
+    public static event Action MainMenuPhaseEnd;
+    
+    public static event Action GameOverPhaseStart;
+    public static event Action GameOverPhaseEnd;
         
     public static void OnEmployeeHover(Employee employee)
     {
@@ -110,5 +116,25 @@ public static class EventHandler
     public static void OnMinigamesPhaseEnd()
     {
         MinigamesPhaseEnd?.Invoke();
+    }
+    
+    public static void OnMainMenuPhaseStart()
+    {
+        MainMenuPhaseStart?.Invoke();
+    }
+    
+    public static void OnMainMenuPhaseEnd()
+    {
+        MainMenuPhaseEnd?.Invoke();
+    }
+
+    public static void OnGameOverPhaseStart()
+    {
+        GameOverPhaseStart?.Invoke();
+    }
+    
+    public static void OnGameOverPhaseEnd()
+    {
+        GameOverPhaseEnd?.Invoke();
     }
 }
