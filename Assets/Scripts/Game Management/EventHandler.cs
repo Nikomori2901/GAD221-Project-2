@@ -17,6 +17,8 @@ public static class EventHandler
     public static event Action<FundPile> FundPileClicked;
     public static event Action<FundPile> FundPileAssigned;
 
+    // Game Management
+    public static event Action GameStart;
     public static event Action GameOver;
     
     // Phase Events
@@ -38,6 +40,7 @@ public static class EventHandler
     public static event Action GameOverPhaseStart;
     public static event Action GameOverPhaseEnd;
         
+    // Employees Events Invocators
     public static void OnEmployeeHover(Employee employee)
     {
         Debug.Log("OnEmployeeHover");
@@ -60,6 +63,7 @@ public static class EventHandler
         EmployeeAssigned?.Invoke(employee);
     }
 
+    // Funds Events Invocators
     public static void OnFundPileHover(FundPile fundPile)
     {
         FundPileHovered?.Invoke(fundPile);
@@ -78,6 +82,17 @@ public static class EventHandler
     public static void OnFundPileAssigned(FundPile fundPile)
     {
         FundPileAssigned?.Invoke(fundPile);
+    }
+    
+    // Game Management Event Invocators
+    public static void OnGameStart()
+    {
+        GameStart?.Invoke();
+    }
+
+    public static void OnGameOver()
+    {
+        GameOver?.Invoke();
     }
 
     // Phase Event Invocators
@@ -130,11 +145,6 @@ public static class EventHandler
     public static void OnMainMenuPhaseEnd()
     {
         MainMenuPhaseEnd?.Invoke();
-    }
-
-    public static void OnGameOver()
-    {
-        GameOver?.Invoke();
     }
 
     public static void OnGameOverPhaseStart()

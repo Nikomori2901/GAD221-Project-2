@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
 
     public int timerLength;
     private int _secondsLeft;
+    
+    private bool _timerActive;
 
     public static Action onTimerFinished;
 
@@ -19,7 +21,10 @@ public class Timer : MonoBehaviour
     {
         _textUI = GetComponent<TMP_Text>();
         
-        EventHandler.EmployeesPhaseStart += StartTimer;
+        //EventHandler.EmployeesPhaseStart += StartTimer;
+        //EventHandler.EmployeesPhaseEnd += StopTimer;
+        //EventHandler.FundsPhaseStart += StartTimer;
+        //EventHandler.FundsPhaseEnd += StopTimer;
     }
 
     [Button]

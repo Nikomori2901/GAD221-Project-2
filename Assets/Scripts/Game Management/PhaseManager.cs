@@ -12,6 +12,10 @@ public class PhaseManager : MonoBehaviour
     public enum GamePhase {Email, Employees, Funds, Minigames, GameOver, MainMenu}
 
     private GamePhase _currentGamePhase;
+
+    private int _stageNumber = 1;
+
+    public static event Action UnloadPhase;
     
     void Awake()
     {
@@ -99,6 +103,7 @@ public class PhaseManager : MonoBehaviour
     public IEnumerator UnloadGamePhase(string sceneName, Action stopEvent)
     {
         stopEvent();
+        UnloadPhase?.Invoke();
         
         yield return new WaitForSeconds(0.05f);
         

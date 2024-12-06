@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using VInspector;
 using Random = UnityEngine.Random;
 
 public class EmployeeSpawner : MonoBehaviour
@@ -24,18 +25,23 @@ public class EmployeeSpawner : MonoBehaviour
     void Start()
     {
         EventHandler.EmployeeAssigned += RemoveEmployee;
-        
-        GenerateInitialRoster();
-        NextEmployee();
+
+        EventHandler.EmployeesPhaseStart += GenerateRoster;
     }
     
-    private void GenerateInitialRoster()
+    [Button]
+    public void GenerateRoster()
     {
         Debug.Log("Initializing Roster");
+        
+        employees.Clear();
+        
         for (int i = 0; i < initialRosterSize; i++)
         {
             NewEmployee();
         }
+        
+        NextEmployee();
     }
     
     public void NewEmployee()
@@ -51,6 +57,7 @@ public class EmployeeSpawner : MonoBehaviour
         employees.Remove(employee);
     }
 
+    [Button]
     public void NextEmployee()
     {
         UpdateEmployeesLeftText();

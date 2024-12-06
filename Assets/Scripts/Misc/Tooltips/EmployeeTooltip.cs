@@ -27,7 +27,6 @@ public class EmployeeTooltip : Tooltip
     {
         Debug.Log("SetEmployeeInfo");
         nameText.text = employee.employeeName;
-        moraleText.text = "Morale\n" + employee.employeeMorale.ToString();
         designText.text = employee.designSkill.ToString();
         programmingText.text = employee.programmingSkill.ToString();
         artText.text = employee.artSkill.ToString();
