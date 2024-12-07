@@ -7,28 +7,26 @@ using VInspector;
 
 public class Minigame : MonoBehaviour
 {
-    private Team _team;
-    
-    private Image _keyIcon;
-    private Slider _slider;
+    public Image _keyIcon;
+    public Slider _slider;
     
     private List<KeyCode> _inputKeys = new List<KeyCode>(new KeyCode[] { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D });
     private KeyCode _currentKeycode;
     
     public int maxProgress;
     private int _progress;
-
     
     public Sprite wSprite;
     public Sprite aSprite;
     public Sprite sSprite;
     public Sprite dSprite;
+
+    public int minigameModifier;
+    public MinigameStation station;
     
-    // need to set sliders>?!@?
     void Start()
     {
-        _keyIcon = GetComponentInChildren<Image>();
-        _slider = GetComponentInChildren<Slider>();
+        
     }
     
     void Update()
@@ -39,23 +37,21 @@ public class Minigame : MonoBehaviour
         }
     }
 
-    public void StartMinigame(Team team)
+    public void StartMinigame(MinigameStation minigameStation)
     {
-        _team = team;
+        station = minigameStation;
+        minigameModifier = station.minigameModifier;
+        _progress = 0;
         gameObject.SetActive(true);
-    }
-
-    [Button]
-    public void Test()
-    {
-        //StartMinigame();
+        
+        NewKey();
     }
     
     private void KeyPress()
     {
         // noise > increment > complete check > new key
         
-        _progress += _team.minigameModifier;
+        _progress += minigameModifier;
 
         if (_progress >= maxProgress)
         {
@@ -68,7 +64,8 @@ public class Minigame : MonoBehaviour
         }
     }
 
-    private void NewKey()
+    [Button]
+    public void NewKey()
     {
         switch (Random.Range(0, _inputKeys.Count))
         {
@@ -94,16 +91,15 @@ public class Minigame : MonoBehaviour
     private void MinigameComplete()
     {
         // morale gain / complete effects
-        
-        _team = null;
+        station.SetMorale(station.morale + 50);
+        station.minigameActive = false;
         gameObject.SetActive(false);
     }
 
     private void StopMinigame()
     {
         StopAllCoroutines();
+        // tells other stuff so it impacts game
+        gameObject.SetActive(false);
     }
-    
-    // minigame spawns with stats altered by the team spawning it
-    // morale is gained and
 }
