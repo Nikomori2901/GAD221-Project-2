@@ -117,6 +117,24 @@ public class PhaseManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(sceneName);
     }
 
+    public void ResetStage()
+    {
+        _stageNumber = 1;
+    }
+
+    public void NextStage()
+    {
+        if (_stageNumber < 5)
+        {
+            _stageNumber++;
+        }
+
+        else
+        {
+            // Game Complete
+        }
+    }
+
     [Button]
     public void MainMenu()
     {
@@ -131,5 +149,10 @@ public class PhaseManager : MonoBehaviour
         StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
         StartCoroutine(LoadGamePhase("GameOverScene", EventHandler.OnGameOverPhaseStart));
         _currentGamePhase = GamePhase.GameOver;
+    }
+
+    public int GetStageNumber()
+    {
+        return _stageNumber;
     }
 }

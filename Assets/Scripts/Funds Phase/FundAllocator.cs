@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VInspector;
 
 public class FundAllocator : MonoBehaviour
 {
     private AudioSource audioSource;
     
-    public List<FundPile> fundPiles = new List<FundPile>();
-    public List<FundStation> fundStations = new List<FundStation>();
+    public GameObject fundPilePrefab;
+    
+    public int resourceAmount;
+    public int resourcesAssigned;
     
     public FundPile currentFundPile;
     public bool currentlyHolding;
     public FundStation hoveringStation;
-
     private Vector3 fundPileOriginalPos;
 
     void Start()
@@ -21,8 +24,38 @@ public class FundAllocator : MonoBehaviour
         
         InputHandler.current.onM1Up += ReleaseFunds;
         EventHandler.FundPileClicked += GrabFundPile;
+        EventHandler.FundsPhaseStart += SetResourceAmount;
     }
 
+    public void SetResourceAmount()
+    {
+        resourceAmount = 5 - PhaseManager.instance.GetStageNumber();
+        resourcesAssigned = 0;
+        NewPile();
+    }
+
+    [Button]
+    public void NewPile()
+    {
+        if (resourcesAssigned == resourceAmount)
+        {
+            // Success Feedback
+            
+            PhaseManager.instance.NextPhase();
+        }
+
+        else
+        {
+            Instantiate(fundPilePrefab);
+        }
+    }
+
+    public void NewPile(FundPile fundPile)
+    {
+        NewPile();
+    }
+
+    #region Picking Up And Assigning
     public void GrabFundPile(FundPile fundPile)
     {
         if (!currentlyHolding)
@@ -79,9 +112,10 @@ public class FundAllocator : MonoBehaviour
     {
         currentFundPile.gameObject.SetActive(false);
         hoveringStation.AllocateFunds();
-        //EventHandler.OnEmployeeAssigned(currentFundPile);
+        resourcesAssigned++;
+        NewPile();
+        
         Clear();
-        //EmployeeSpawner.instance.NextEmployee();
     }
 
     public void ReturnFundPile()
@@ -94,29 +128,9 @@ public class FundAllocator : MonoBehaviour
     {
         currentFundPile = null;
         currentlyHolding = false;
+        hoveringStation = null;
         fundPileOriginalPos = Vector3.zero;
         StopAllCoroutines();
     }
-
-    public void Reset()
-    {
-        Clear();
-        
-        GameObject.Find("Programming Team").GetComponent<Team>().hasFunds = false;
-        GameObject.Find("Design Team").GetComponent<Team>().hasFunds = false;
-        GameObject.Find("Art Team").GetComponent<Team>().hasFunds = false;
-        GameObject.Find("Audio Team").GetComponent<Team>().hasFunds = false;
-
-        foreach (FundPile fundPile in fundPiles)
-        {
-            fundPile.transform.position = fundPile.initPos;
-            fundPile.collider.enabled = true;
-            fundPile.gameObject.SetActive(true);
-        }
-        
-        foreach (FundStation fundStation in fundStations)
-        {
-            fundStation.gameObject.SetActive(true);
-        }
-    }
+    #endregion
 }
