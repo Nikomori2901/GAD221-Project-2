@@ -86,7 +86,8 @@ public class PhaseManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.05f);
         
-        startEvent();
+        Debug.Log("Load Event");
+        startEvent?.Invoke();
     }
     
     public IEnumerator LoadGamePhase(string sceneName)
@@ -102,7 +103,7 @@ public class PhaseManager : MonoBehaviour
     
     public IEnumerator UnloadGamePhase(string sceneName, Action stopEvent)
     {
-        stopEvent();
+        stopEvent?.Invoke();
         UnloadPhase?.Invoke();
         
         yield return new WaitForSeconds(0.05f);

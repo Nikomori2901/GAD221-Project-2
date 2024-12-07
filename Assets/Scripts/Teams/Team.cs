@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,19 @@ public class Team : MonoBehaviour
     void Start()
     {
         
+        
     }
-    
+
+    private void OnEnable()
+    {
+        EventHandler.MinigamesPhaseStart += SetInitialMorale;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.MinigamesPhaseStart -= SetInitialMorale;
+    }
+
     void Update()
     {
         

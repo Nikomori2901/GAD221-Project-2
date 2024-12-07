@@ -26,7 +26,7 @@ public class Minigame : MonoBehaviour
     
     void Start()
     {
-        
+        _slider.maxValue = maxProgress;
     }
     
     void Update()
@@ -52,6 +52,7 @@ public class Minigame : MonoBehaviour
         // noise > increment > complete check > new key
         
         _progress += minigameModifier;
+        _slider.value = _progress;
 
         if (_progress >= maxProgress)
         {
@@ -91,8 +92,19 @@ public class Minigame : MonoBehaviour
     private void MinigameComplete()
     {
         // morale gain / complete effects
-        station.SetMorale(station.morale + 50);
+        if (station.morale < 50)
+        {
+            station.SetMorale(station.morale + 50);
+        }
+
+        else
+        {
+            station.SetMorale(100);
+        }
+        
         station.minigameActive = false;
+        station.StartSpawning();
+        station.StartDraining();
         gameObject.SetActive(false);
     }
 

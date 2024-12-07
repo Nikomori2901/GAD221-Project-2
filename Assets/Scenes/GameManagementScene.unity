@@ -172,7 +172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &32589941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &158796626
 Transform:
   m_ObjectHideFlags: 0
@@ -497,11 +497,7 @@ MonoBehaviour:
   assignedEmployees: []
   totalSkill: 0
   hasFunds: 0
-  minigameActive: 0
-  morale: 0
-  drainSpeed: 1
-  drainSpeedFast: 2
-  minigameModifier: 0
+  initialMorale: 0
 --- !u!1 &584950707
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,11 +546,7 @@ MonoBehaviour:
   assignedEmployees: []
   totalSkill: 0
   hasFunds: 0
-  minigameActive: 0
-  morale: 0
-  drainSpeed: 1
-  drainSpeedFast: 2
-  minigameModifier: 0
+  initialMorale: 0
 --- !u!1 &910602489
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,11 +723,7 @@ MonoBehaviour:
   assignedEmployees: []
   totalSkill: 0
   hasFunds: 0
-  minigameActive: 0
-  morale: 0
-  drainSpeed: 1
-  drainSpeedFast: 2
-  minigameModifier: 0
+  initialMorale: 0
 --- !u!1 &1183324281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,11 +1011,7 @@ MonoBehaviour:
   assignedEmployees: []
   totalSkill: 0
   hasFunds: 0
-  minigameActive: 0
-  morale: 0
-  drainSpeed: 1
-  drainSpeedFast: 2
-  minigameModifier: 0
+  initialMorale: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

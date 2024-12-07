@@ -9,6 +9,8 @@ public class MinigameStation : MonoBehaviour
 {
     public Team team;
     private Slider _moraleBar;
+    public Minigame minigame;
+    public MinigamePopup minigamePopup;
     
     public string teamName;
     public int morale;
@@ -21,11 +23,14 @@ public class MinigameStation : MonoBehaviour
     {
         team = GameObject.Find(teamName).GetComponent<Team>();
         _moraleBar = GetComponentInChildren<Slider>();
+        
+        EventHandler.MinigamesPhaseStart += Initialize;
     }
 
     [Button]
     public void Initialize()
     {
+        Debug.Log("Initialize");
         SetMorale(team.initialMorale);
         
         if (team.hasFunds)
@@ -38,6 +43,8 @@ public class MinigameStation : MonoBehaviour
             minigameModifier = 1;
         }
         
+        StartSpawning();
+        StartDraining();
     }
     
     #region Morale
@@ -71,7 +78,7 @@ public class MinigameStation : MonoBehaviour
     [Button]
     public void StopDraining()
     {
-        StopAllCoroutines();
+        StopCoroutine("DrainMorale");
     }
 
     
@@ -84,15 +91,35 @@ public class MinigameStation : MonoBehaviour
     #endregion
     
     #region Minigame Spawning
+
+    public void StartSpawning()
+    {
+        Debug.Log("StartSpawning");
+        int seconds = Random.Range(5, 15);
+        StartCoroutine(Spawning(seconds));
+    }
+
+    public IEnumerator Spawning(int waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        SpawnMinigamePopup();
+    }
+
+    public void StopSpawning()
+    {
+        StopCoroutine("Spawning");
+    }
+    
     public void SpawnMinigamePopup()
     {
-        
+        minigamePopup.gameObject.SetActive(true);
     }
 
     public void PopupClicked()
     {
-        
+        minigame.StartMinigame(this);
         minigameActive = true;
+        StopSpawning();
     }
     #endregion
 }

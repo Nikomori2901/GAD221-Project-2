@@ -132,5 +132,10 @@ public class FundAllocator : MonoBehaviour
         fundPileOriginalPos = Vector3.zero;
         StopAllCoroutines();
     }
+
+    public void Reset()
+    {
+        // got removed need to add again
+    }
     #endregion
 }

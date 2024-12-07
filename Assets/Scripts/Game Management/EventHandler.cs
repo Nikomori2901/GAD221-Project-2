@@ -20,6 +20,8 @@ public static class EventHandler
     // Game Management
     public static event Action GameStart;
     public static event Action GameOver;
+
+    public static event Action StartMinigameStations;
     
     // Phase Events
     public static event Action EmailPhaseStart;
@@ -95,6 +97,12 @@ public static class EventHandler
         GameOver?.Invoke();
     }
 
+    public static void OnStartMinigameStations()
+    {
+        Debug.Log("OnStartMinigameStations");
+        StartMinigameStations?.Invoke();
+    }
+
     // Phase Event Invocators
     public static void OnEmailPhaseStart()
     {
@@ -129,6 +137,7 @@ public static class EventHandler
     
     public static void OnMinigamesPhaseStart()
     {
+        Debug.Log("OnMinigamesPhaseStart");
         MinigamesPhaseStart?.Invoke();
     }
     
