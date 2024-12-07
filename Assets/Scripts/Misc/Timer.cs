@@ -25,13 +25,17 @@ public class Timer : MonoBehaviour
         EventHandler.EmployeesPhaseEnd += StopTimer;
         EventHandler.FundsPhaseStart += StartTimer;
         EventHandler.FundsPhaseEnd += StopTimer;
+        EventHandler.MinigamesPhaseStart += StartTimer;
+        EventHandler.MinigamesPhaseEnd += StopTimer;
+        
+        gameObject.SetActive(false);
     }
 
     [Button]
     public void StartTimer()
     {
         Debug.Log("Start Timer");
-        
+        gameObject.SetActive(true);
         ResetTimer();
         StartCoroutine(TimerLoop());
     }
@@ -40,8 +44,8 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         Debug.Log("Stop Timer");
-        
         ResetTimer();
+        gameObject.SetActive(false);
     }
 
     private void ResetTimer()
@@ -71,7 +75,7 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        Debug.Log(_secondsLeft);
+        //Debug.Log(_secondsLeft);
         _textUI.text = "Time Left: " + _secondsLeft.ToString();
     }
 }

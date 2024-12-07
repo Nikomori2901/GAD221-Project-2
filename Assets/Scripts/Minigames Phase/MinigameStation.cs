@@ -18,6 +18,8 @@ public class MinigameStation : MonoBehaviour
     public int drainAmount;
     
     public bool minigameActive;
+    
+    public Coroutine drainMoraleCoroutine;
 
     void Start()
     {
@@ -57,7 +59,8 @@ public class MinigameStation : MonoBehaviour
     [Button]
     public void StartDraining()
     {
-        StartCoroutine(DrainMorale());
+        Debug.Log("StartDraining");
+        drainMoraleCoroutine = StartCoroutine(DrainMorale());
     }
 
     public IEnumerator DrainMorale()
@@ -78,7 +81,8 @@ public class MinigameStation : MonoBehaviour
     [Button]
     public void StopDraining()
     {
-        StopCoroutine("DrainMorale");
+        Debug.Log("StopDraining");
+        StopCoroutine(drainMoraleCoroutine);
     }
 
     
@@ -86,7 +90,7 @@ public class MinigameStation : MonoBehaviour
     {
         StopDraining();
         StopAllCoroutines();
-        // fire event for phase manager to go to gameover screen.
+        PhaseManager.instance.GameOver();
     }
     #endregion
     
@@ -95,7 +99,7 @@ public class MinigameStation : MonoBehaviour
     public void StartSpawning()
     {
         Debug.Log("StartSpawning");
-        int seconds = Random.Range(5, 15);
+        int seconds = Random.Range(5, 10);
         StartCoroutine(Spawning(seconds));
     }
 
@@ -119,6 +123,7 @@ public class MinigameStation : MonoBehaviour
     {
         minigame.StartMinigame(this);
         minigameActive = true;
+        StopDraining();
         StopSpawning();
     }
     #endregion

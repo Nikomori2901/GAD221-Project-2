@@ -91,7 +91,7 @@ public class Minigame : MonoBehaviour
 
     private void MinigameComplete()
     {
-        // morale gain / complete effects
+        Debug.Log("MinigameComplete");
         if (station.morale < 50)
         {
             station.SetMorale(station.morale + 50);

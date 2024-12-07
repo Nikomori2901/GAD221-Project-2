@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -22,7 +23,14 @@ public class EmployeeTooltip : Tooltip
         
         gameObject.SetActive(false);
     }
-    
+
+    private void OnDestroy()
+    {
+        EventHandler.EmployeeHovered -= SetEmployeeInfo;
+        EventHandler.EmployeeHovered -= ShowTooltip;
+        EventHandler.EmployeeUnhovered -= HideTooltip;
+    }
+
     public void SetEmployeeInfo(Employee employee)
     {
         Debug.Log("SetEmployeeInfo");

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using VHierarchy.Libs;
 using VInspector;
 using Random = UnityEngine.Random;
 
@@ -46,6 +47,7 @@ public class EmployeeSpawner : MonoBehaviour
     
     public void NewEmployee()
     {
+        Debug.Log("NewEmployee");
         Employee newEmployee = Instantiate(employeePrefab, spawnLocation, Quaternion.identity).GetComponent<Employee>();
         newEmployee.Initialize(RandomName(), 100,Random.Range(1, 6),Random.Range(1, 6),Random.Range(1, 6),Random.Range(1, 6));
         newEmployee.gameObject.SetActive(false);
@@ -55,6 +57,7 @@ public class EmployeeSpawner : MonoBehaviour
     public void RemoveEmployee(Employee employee)
     {
         employees.Remove(employee);
+        employee.gameObject.Destroy();
     }
 
     [Button]
@@ -69,6 +72,7 @@ public class EmployeeSpawner : MonoBehaviour
 
         else
         {
+            employees.Clear();
             EndAssignmentPhase();
         }
     }

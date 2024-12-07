@@ -8,6 +8,8 @@ using VInspector;
 public class PhaseManager : MonoBehaviour
 {
     public static PhaseManager instance;
+
+    public Timer timer;
     
     public enum GamePhase {Email, Employees, Funds, Minigames, GameOver, MainMenu}
 
@@ -40,23 +42,27 @@ public class PhaseManager : MonoBehaviour
         {
             case GamePhase.Email:
                 StartCoroutine(UnloadGamePhase("EmailScene", EventHandler.OnEmailPhaseEnd));
+                timer.timerLength = 20;
                 StartCoroutine(LoadGamePhase("EmployeesScene", EventHandler.OnEmployeesPhaseStart));
                 _currentGamePhase = GamePhase.Employees;
             break;
             
             case GamePhase.Employees:
                 StartCoroutine(UnloadGamePhase("EmployeesScene", EventHandler.OnEmployeesPhaseEnd));
+                timer.timerLength = 20;
                 StartCoroutine(LoadGamePhase("FundsScene", EventHandler.OnFundsPhaseStart));
                 _currentGamePhase = GamePhase.Funds;
             break;
             
             case GamePhase.Funds:
                 StartCoroutine(UnloadGamePhase("FundsScene", EventHandler.OnFundsPhaseEnd));
+                timer.timerLength = 60;
                 StartCoroutine(LoadGamePhase("MinigamesScene", EventHandler.OnMinigamesPhaseStart));
                 _currentGamePhase = GamePhase.Minigames;
             break;
             
             case GamePhase.Minigames:
+                NextStage();
                 StartCoroutine(UnloadGamePhase("MinigamesScene", EventHandler.OnMinigamesPhaseEnd));
                 StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
                 _currentGamePhase = GamePhase.Email;
@@ -70,8 +76,9 @@ public class PhaseManager : MonoBehaviour
             
             case GamePhase.GameOver:
                 StartCoroutine(UnloadGamePhase("GameOverScene", EventHandler.OnGameOverPhaseEnd));
-                StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
-                _currentGamePhase = GamePhase.Email;
+                StartCoroutine(LoadGamePhase("MainMenuScene", EventHandler.OnMainMenuPhaseStart));
+                ResetStage();
+                _currentGamePhase = GamePhase.MainMenu;
                 break;
         }
     }
@@ -147,6 +154,7 @@ public class PhaseManager : MonoBehaviour
     [Button]
     public void GameOver()
     {
+        timer.StopTimer();
         StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
         StartCoroutine(LoadGamePhase("GameOverScene", EventHandler.OnGameOverPhaseStart));
         _currentGamePhase = GamePhase.GameOver;
