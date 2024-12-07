@@ -60,7 +60,6 @@ public class FundAllocator : MonoBehaviour
     {
         if (!currentlyHolding)
         {
-            audioSource.Play();
             currentFundPile = fundPile;
             currentFundPile.collider.enabled = false;
             currentlyHolding = true;
@@ -113,6 +112,7 @@ public class FundAllocator : MonoBehaviour
         currentFundPile.gameObject.SetActive(false);
         hoveringStation.AllocateFunds();
         resourcesAssigned++;
+        audioSource.Play();
         NewPile();
         
         Clear();

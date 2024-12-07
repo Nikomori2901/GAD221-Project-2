@@ -15,6 +15,8 @@ public class EmailPhase : MonoBehaviour
     {
         _emailtext = GetComponentInChildren<TMP_Text>();
         _button = GetComponentInChildren<Button>();
+
+        EventHandler.EmailPhaseStart += SetText;
         
         _emails.Add // Email 1
             (
@@ -47,12 +49,12 @@ public class EmailPhase : MonoBehaviour
                 "Sincerely, Publisher CEO"
             );
 
-        SetText(4);
+        //SetText();
     }
 
-    public void SetText(int stage)
+    public void SetText()
     {
-        switch (stage)
+        switch (PhaseManager.instance.GetStageNumber())
         {
             case 1:
                 _emailtext.text = _emails[0];
