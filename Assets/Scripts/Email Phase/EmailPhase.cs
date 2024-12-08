@@ -79,5 +79,6 @@ public class EmailPhase : MonoBehaviour
     public void NextDayButtonPress()
     {
         PhaseManager.instance.NextPhase();
+        EventHandler.OnBeepNoise();
     }
 }

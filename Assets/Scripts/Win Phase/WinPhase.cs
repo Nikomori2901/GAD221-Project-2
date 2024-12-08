@@ -9,5 +9,6 @@ public class WinPhase : MonoBehaviour
     public void ButtonPress()
     {
         PhaseManager.instance.MainMenu();
+        EventHandler.OnBeepNoise();
     }
 }

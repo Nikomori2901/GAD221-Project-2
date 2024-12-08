@@ -45,7 +45,14 @@ public static class EventHandler
     
     public static event Action GameOverPhaseStart;
     public static event Action GameOverPhaseEnd;
-        
+
+    public static event Action BeepNoise;
+
+    public static void OnBeepNoise()
+    {
+        BeepNoise?.Invoke();
+    }
+    
     // Employees Events Invocators
     public static void OnEmployeeHover(Employee employee)
     {

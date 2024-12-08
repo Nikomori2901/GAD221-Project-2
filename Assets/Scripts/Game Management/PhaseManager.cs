@@ -9,6 +9,8 @@ using VInspector;
 public class PhaseManager : MonoBehaviour
 {
     public static PhaseManager instance;
+    
+    public AudioSource audioSource;
 
     public Timer timer;
     
@@ -58,6 +60,7 @@ public class PhaseManager : MonoBehaviour
                 timer.timerLength = 20;
                 StartCoroutine(LoadGamePhase("FundsScene", EventHandler.OnFundsPhaseStart));
                 _currentGamePhase = GamePhase.Funds;
+                audioSource.Play();
             break;
             
             case GamePhase.Funds:
@@ -65,11 +68,12 @@ public class PhaseManager : MonoBehaviour
                 timer.timerLength = 60;
                 StartCoroutine(LoadGamePhase("MinigamesScene", EventHandler.OnMinigamesPhaseStart));
                 _currentGamePhase = GamePhase.Minigames;
+                audioSource.Play();
             break;
             
             case GamePhase.Minigames:
                 StartCoroutine(UnloadGamePhase("MinigamesScene", EventHandler.OnMinigamesPhaseEnd));
-                
+                audioSource.Play();
                 if (stageNumber < 4)
                 {
                     stageNumber++;
@@ -174,6 +178,7 @@ public class PhaseManager : MonoBehaviour
     [Button]
     public void WinScreen()
     {
+        audioSource.Play();
         timer.StopTimer();
         StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
         StartCoroutine(LoadGamePhase("WinScene"));

@@ -8,6 +8,9 @@ using VInspector;
 
 public class Minigame : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioSource audioSource2;
+    
     public Image _keyIcon;
     public Slider _slider;
     
@@ -56,7 +59,7 @@ public class Minigame : MonoBehaviour
     
     private void KeyPress()
     {
-        // noise
+        audioSource.Play();
         
         _progress += minigameModifier;
         _slider.value = _progress;
@@ -115,6 +118,8 @@ public class Minigame : MonoBehaviour
 
     private void MinigameComplete()
     {
+        audioSource2.Play();
+        
         Debug.Log("MinigameComplete");
         if (station.morale < 50)
         {

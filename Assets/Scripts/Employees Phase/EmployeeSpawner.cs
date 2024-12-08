@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using VHierarchy.Libs;
 using VInspector;
 using Random = UnityEngine.Random;
 
@@ -71,10 +70,9 @@ public class EmployeeSpawner : MonoBehaviour
     public void RemoveEmployee(Employee employee)
     {
         employees.Remove(employee);
-        employee.gameObject.Destroy();
+        Destroy(employee.gameObject);
     }
-
-    [Button]
+    
     public void NextEmployee()
     {
         UpdateEmployeesLeftText();

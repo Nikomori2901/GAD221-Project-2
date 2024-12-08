@@ -3,15 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using VInspector;
 
 public class MinigamePopup : MonoBehaviour
 {
     public MinigameStation station;
+    public Button button;
+
+    public AudioSource audioSource;
     
-    public bool clickable = true;
 
     private void Start()
     {
+        button = GetComponent<Button>();
+        
         EventHandler.ToggleMinigame += ToggleClickable;
         gameObject.SetActive(false);
     }
@@ -24,16 +30,15 @@ public class MinigamePopup : MonoBehaviour
     public void ToggleClickable()
     {
         Debug.Log("ToggleClickable");
-        clickable = !clickable;
+        //clickable = !clickable;
+        button.interactable = !button.interactable;
     }
 
     public void OnMouseDown()
     {
-        if (clickable)
-        {
-            EventHandler.OnToggleMinigame();
-            station.PopupClicked();
-            gameObject.SetActive(false);
-        }
+        audioSource.Play();
+        EventHandler.OnToggleMinigame();
+        station.PopupClicked();
+        gameObject.SetActive(false);
     }
 }
