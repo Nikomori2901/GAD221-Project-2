@@ -52,6 +52,11 @@ public class EmailPhase : MonoBehaviour
         //SetText();
     }
 
+    private void OnDestroy()
+    {
+        EventHandler.EmailPhaseStart -= SetText;
+    }
+
     public void SetText()
     {
         switch (PhaseManager.instance.GetStageNumber())

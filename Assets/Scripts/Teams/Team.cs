@@ -18,8 +18,12 @@ public class Team : MonoBehaviour
     
     void Start()
     {
-        
-        
+        EventHandler.MinigamesPhaseEnd += Reset;
+    }
+
+    private void OnDestroy()
+    {
+        EventHandler.MinigamesPhaseEnd -= Reset;
     }
 
     private void OnEnable()

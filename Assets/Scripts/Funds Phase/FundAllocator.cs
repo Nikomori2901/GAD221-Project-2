@@ -27,6 +27,13 @@ public class FundAllocator : MonoBehaviour
         EventHandler.FundsPhaseStart += SetResourceAmount;
     }
 
+    private void OnDestroy()
+    {
+        InputHandler.current.onM1Up -= ReleaseFunds;
+        EventHandler.FundPileClicked -= GrabFundPile;
+        EventHandler.FundsPhaseStart -= SetResourceAmount;
+    }
+
     public void SetResourceAmount()
     {
         resourceAmount = 5 - PhaseManager.instance.GetStageNumber();
