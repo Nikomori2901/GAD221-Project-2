@@ -36,8 +36,16 @@ public class PizzaParty : MonoBehaviour
         image3.gameObject.SetActive(false);
         image4.gameObject.SetActive(false);
         SetColorNormal();
-        
-        gameObject.SetActive(true);
+
+        if (PhaseManager.instance.stageNumber == 4)
+        {
+            gameObject.SetActive(false);
+        }
+
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     private void OnDestroy()

@@ -13,10 +13,10 @@ public class MinigameStation : MonoBehaviour
     public MinigamePopup minigamePopup;
     
     public string teamName;
-    public int morale;
+    public float morale;
     public int minigameModifier;
-    public int drainAmount;
-    public int initalDrainAmount;
+    public float drainAmount;
+    public float initalDrainAmount;
     
     public bool minigameActive;
     
@@ -29,7 +29,7 @@ public class MinigameStation : MonoBehaviour
         
         EventHandler.MinigamesPhaseStart += Initialize;
         
-        initalDrainAmount = drainAmount;
+        //initalDrainAmount = drainAmount;
     }
 
     void OnDestroy()
@@ -42,6 +42,9 @@ public class MinigameStation : MonoBehaviour
     {
         Debug.Log("Initialize");
         SetMorale(team.initialMorale);
+
+        initalDrainAmount = 1 + (PhaseManager.instance.stageNumber * 0.25f);
+        drainAmount = initalDrainAmount;
         
         if (team.hasFunds)
         {
@@ -59,7 +62,7 @@ public class MinigameStation : MonoBehaviour
     
     #region Morale
 
-    public void SetMorale(int moraleValue)
+    public void SetMorale(float moraleValue)
     {
         morale = moraleValue;
         _moraleBar.value = morale;
