@@ -35,6 +35,8 @@ public static class EventHandler
     
     public static event Action MinigamesPhaseStart;
     public static event Action MinigamesPhaseEnd;
+
+    public static event Action ToggleMinigame;
     
     public static event Action MainMenuPhaseStart;
     public static event Action MainMenuPhaseEnd;
@@ -144,6 +146,11 @@ public static class EventHandler
     public static void OnMinigamesPhaseEnd()
     {
         MinigamesPhaseEnd?.Invoke();
+    }
+
+    public static void OnToggleMinigame()
+    {
+        ToggleMinigame?.Invoke();
     }
     
     public static void OnMainMenuPhaseStart()
