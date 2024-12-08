@@ -20,7 +20,14 @@ public class EmployeeSpawner : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     void Start()
@@ -29,7 +36,14 @@ public class EmployeeSpawner : MonoBehaviour
 
         EventHandler.EmployeesPhaseStart += GenerateRoster;
     }
-    
+
+    private void OnDestroy()
+    {
+        EventHandler.EmployeeAssigned -= RemoveEmployee;
+
+        EventHandler.EmployeesPhaseStart -= GenerateRoster;
+    }
+
     [Button]
     public void GenerateRoster()
     {

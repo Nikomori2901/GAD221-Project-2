@@ -32,6 +32,11 @@ public class PhaseManager : MonoBehaviour
         
         Timer.onTimerFinished += NextPhase;
     }
+
+    void OnDestroy()
+    {
+        Timer.onTimerFinished -= NextPhase;
+    }
     
     [Button]
     public void NextPhase() // Unload the Current Phase & Load the next one
@@ -93,7 +98,7 @@ public class PhaseManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.05f);
         
-        Debug.Log("Load Event");
+        //Debug.Log("Load Event");
         startEvent?.Invoke();
     }
     

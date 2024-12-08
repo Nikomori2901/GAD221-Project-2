@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,12 @@ public class EmployeeGrabber : MonoBehaviour
         
         InputHandler.current.onM1Up += ReleaseEmployee;
         EventHandler.EmployeeClicked += GrabEmployee;
+    }
+
+    private void OnDestroy()
+    {
+        InputHandler.current.onM1Up -= ReleaseEmployee;
+        EventHandler.EmployeeClicked -= GrabEmployee;
     }
 
     public void GrabEmployee(Employee employee)

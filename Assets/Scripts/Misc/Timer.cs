@@ -31,6 +31,16 @@ public class Timer : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        EventHandler.EmployeesPhaseStart -= StartTimer;
+        EventHandler.EmployeesPhaseEnd -= StopTimer;
+        EventHandler.FundsPhaseStart -= StartTimer;
+        EventHandler.FundsPhaseEnd -= StopTimer;
+        EventHandler.MinigamesPhaseStart -= StartTimer;
+        EventHandler.MinigamesPhaseEnd -= StopTimer;
+    }
+
     [Button]
     public void StartTimer()
     {

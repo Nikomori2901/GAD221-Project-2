@@ -29,6 +29,11 @@ public class MinigameStation : MonoBehaviour
         EventHandler.MinigamesPhaseStart += Initialize;
     }
 
+    void OnDestroy()
+    {
+        EventHandler.MinigamesPhaseStart -= Initialize;
+    }
+
     [Button]
     public void Initialize()
     {
