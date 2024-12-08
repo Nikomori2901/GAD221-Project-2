@@ -16,6 +16,7 @@ public class MinigameStation : MonoBehaviour
     public int morale;
     public int minigameModifier;
     public int drainAmount;
+    public int initalDrainAmount;
     
     public bool minigameActive;
     
@@ -27,6 +28,8 @@ public class MinigameStation : MonoBehaviour
         _moraleBar = GetComponentInChildren<Slider>();
         
         EventHandler.MinigamesPhaseStart += Initialize;
+        
+        initalDrainAmount = drainAmount;
     }
 
     void OnDestroy()
@@ -130,6 +133,11 @@ public class MinigameStation : MonoBehaviour
         minigameActive = true;
         StopDraining();
         StopSpawning();
+    }
+
+    public void SetDrainAmount(int amount)
+    {
+        drainAmount = amount;
     }
     #endregion
 }

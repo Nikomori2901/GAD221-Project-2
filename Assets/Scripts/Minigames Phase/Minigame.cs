@@ -132,6 +132,7 @@ public class Minigame : MonoBehaviour
         gameObject.SetActive(false);
         
         EventHandler.OnToggleMinigame();
+        EventHandler.OnMinigameComplete();
     }
 
     private void StopMinigame()
