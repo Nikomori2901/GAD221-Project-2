@@ -35,6 +35,11 @@ public class Minigame : MonoBehaviour
         {
             KeyPress();
         }
+        
+        else if (Input.anyKeyDown)
+        {
+            WrongKey();
+        }
     }
 
     public void StartMinigame(MinigameStation minigameStation)
@@ -42,6 +47,7 @@ public class Minigame : MonoBehaviour
         station = minigameStation;
         minigameModifier = station.minigameModifier;
         _progress = 0;
+        _slider.value = _progress;
         gameObject.SetActive(true);
         
         NewKey();
@@ -49,7 +55,7 @@ public class Minigame : MonoBehaviour
     
     private void KeyPress()
     {
-        // noise > increment > complete check > new key
+        // noise
         
         _progress += minigameModifier;
         _slider.value = _progress;
@@ -63,6 +69,23 @@ public class Minigame : MonoBehaviour
         {
             NewKey();
         }
+    }
+
+    public void WrongKey()
+    {
+        // noise
+
+        if (_progress <= minigameModifier)
+        {
+            _progress = 0;
+        }
+
+        else
+        {
+            _progress -= minigameModifier;
+        }
+        
+        _slider.value = _progress;
     }
 
     [Button]
