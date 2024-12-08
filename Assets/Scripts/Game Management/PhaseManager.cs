@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using VInspector;
 
 public class PhaseManager : MonoBehaviour
@@ -11,11 +12,11 @@ public class PhaseManager : MonoBehaviour
 
     public Timer timer;
     
-    public enum GamePhase {Email, Employees, Funds, Minigames, GameOver, MainMenu}
+    public enum GamePhase {Email, Employees, Funds, Minigames, GameOver, MainMenu, Win}
 
     private GamePhase _currentGamePhase;
 
-    private int _stageNumber = 1;
+    public int stageNumber = 1;
 
     public static event Action UnloadPhase;
     
@@ -67,10 +68,19 @@ public class PhaseManager : MonoBehaviour
             break;
             
             case GamePhase.Minigames:
-                NextStage();
                 StartCoroutine(UnloadGamePhase("MinigamesScene", EventHandler.OnMinigamesPhaseEnd));
-                StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
-                _currentGamePhase = GamePhase.Email;
+                
+                if (stageNumber < 4)
+                {
+                    stageNumber++;
+                    StartCoroutine(LoadGamePhase("EmailScene", EventHandler.OnEmailPhaseStart));
+                    _currentGamePhase = GamePhase.Email;
+                }
+
+                else
+                {
+                    WinScreen();
+                }
             break;
             
             case GamePhase.MainMenu:
@@ -81,6 +91,13 @@ public class PhaseManager : MonoBehaviour
             
             case GamePhase.GameOver:
                 StartCoroutine(UnloadGamePhase("GameOverScene", EventHandler.OnGameOverPhaseEnd));
+                StartCoroutine(LoadGamePhase("MainMenuScene", EventHandler.OnMainMenuPhaseStart));
+                ResetStage();
+                _currentGamePhase = GamePhase.MainMenu;
+                break;
+            
+            case GamePhase.Win:
+                StartCoroutine(UnloadGamePhase("WinScene"));
                 StartCoroutine(LoadGamePhase("MainMenuScene", EventHandler.OnMainMenuPhaseStart));
                 ResetStage();
                 _currentGamePhase = GamePhase.MainMenu;
@@ -132,20 +149,7 @@ public class PhaseManager : MonoBehaviour
 
     public void ResetStage()
     {
-        _stageNumber = 1;
-    }
-
-    public void NextStage()
-    {
-        if (_stageNumber < 5)
-        {
-            _stageNumber++;
-        }
-
-        else
-        {
-            // Game Complete
-        }
+        stageNumber = 1;
     }
 
     [Button]
@@ -153,6 +157,7 @@ public class PhaseManager : MonoBehaviour
     {
         StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
         StartCoroutine(LoadGamePhase("MainMenuScene", EventHandler.OnMainMenuPhaseStart));
+        ResetStage();
         _currentGamePhase = GamePhase.MainMenu;
     }
 
@@ -162,11 +167,22 @@ public class PhaseManager : MonoBehaviour
         timer.StopTimer();
         StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
         StartCoroutine(LoadGamePhase("GameOverScene", EventHandler.OnGameOverPhaseStart));
+        ResetStage();
         _currentGamePhase = GamePhase.GameOver;
+    }
+
+    [Button]
+    public void WinScreen()
+    {
+        timer.StopTimer();
+        StartCoroutine(UnloadGamePhase(_currentGamePhase.ToString() + "Scene"));
+        StartCoroutine(LoadGamePhase("WinScene"));
+        ResetStage();
+        _currentGamePhase = GamePhase.Win;
     }
 
     public int GetStageNumber()
     {
-        return _stageNumber;
+        return stageNumber;
     }
 }

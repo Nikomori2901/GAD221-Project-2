@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using VInspector;
 
 public class FundAllocator : MonoBehaviour
 {
     private AudioSource audioSource;
+    public TMP_Text text;
     
     public GameObject fundPilePrefab;
     
@@ -39,6 +41,7 @@ public class FundAllocator : MonoBehaviour
         resourceAmount = 5 - PhaseManager.instance.GetStageNumber();
         resourcesAssigned = 0;
         NewPile();
+        UpdateFundsText();
     }
 
     [Button]
@@ -121,8 +124,14 @@ public class FundAllocator : MonoBehaviour
         resourcesAssigned++;
         audioSource.Play();
         NewPile();
+        UpdateFundsText();
         
         Clear();
+    }
+
+    public void UpdateFundsText()
+    {
+        text.text = "Resources Left: " + (resourceAmount - resourcesAssigned).ToString();
     }
 
     public void ReturnFundPile()
